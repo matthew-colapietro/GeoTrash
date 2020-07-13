@@ -1,0 +1,26 @@
+{
+  "name": "geotrash",
+  "version": "1.0.0",
+  "description": "This project focuses on a community reporting tool for trash that can be used by local officials to monitor and their jurisdiction.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthew-colapietro/GeoTrash.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthew-colapietro/GeoTrash/issues"
+  },
+  "homepage": "https://github.com/matthew-colapietro/GeoTrash#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-promise": "^0.6.0"
+  }
+}
