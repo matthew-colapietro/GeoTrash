@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.css';
 import ReactPaginate from 'react-paginate';
+import MapContainer  from "./MapContainer";
 
 
 class App extends Component {
@@ -14,7 +15,10 @@ class App extends Component {
 
   render() {
     return (
-      <h1>GeoTrash</h1>
+      <div>
+        <h1 className= "text-center mt-2" >GeoTrash</h1>
+        <MapContainer />
+      </div>
     )
   }
 }

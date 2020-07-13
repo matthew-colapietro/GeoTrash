@@ -1,9 +1,30 @@
 import React, { Component } from "react";
 //import { connect } from "react-redux";
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
 
 export class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      trashLocations: [
+        { lat: 35.780313, lng: -78.639144 },
+        { lat: 35.769027, lng: -78.722105 },
+        { lat: 35.760321, lng: -78.720989 }
+      ]
+    }
+  }
+
+  displayMarkers = () => {
+    return this.state.trashLocations.map((location, index) => {
+      return <Marker key={index} id={index} position = {{
+        lat: location.lat,
+        lng: location.lng
+      }}
+      onClick={() => console.log("Location Clicked")} />
+    })
+  }
 
   render() {
     console.log(`rendering map container`)
@@ -18,11 +39,13 @@ export class MapContainer extends Component {
     return (
       <Map
         google={this.props.google}
-        zoom={11}
+        zoom={12}
         style={mapStyles}
-        initialCenter={{ lat: 47.444, lng: -122.176 }}
-        center={{ lat: 47.444, lng: -122.176 }}
-      />
+        initialCenter={{ lat: 35.780313, lng: -78.639144 }}
+        center={{ lat: 35.780313, lng: -78.639144 }}
+      >
+        {this.displayMarkers()}
+      </Map>
     )
   }
 }
