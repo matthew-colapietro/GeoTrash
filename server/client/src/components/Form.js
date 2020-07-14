@@ -28,7 +28,7 @@ class Form extends Component {
         <div className="col-md-12">
           
           <div className="page-header text-center mt-5">
-            <h3>Submit New Trash Location</h3>
+            <h2>Submit New Trash Location</h2>
           </div>
 
            {/* form to hold the values the user will submit to add a new contact */}

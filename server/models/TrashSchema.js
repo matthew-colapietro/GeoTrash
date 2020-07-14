@@ -8,7 +8,9 @@ const TrashSchema = new Schema({
   email: String,
   trashImage: String,
   trashQuantity: String,
-  hazardnessLevel: String
+  hazardnessLevel: String,
+  longitude: Number,
+  latitude: Number
 })
 
 
