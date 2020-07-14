@@ -26,7 +26,7 @@ class Form extends Component {
     
         <div className="col-md-12">
           
-          <div className="page-header text-center">
+          <div className="page-header text-center mt-5">
             <h3>Submit New Trash Location</h3>
           </div>
 

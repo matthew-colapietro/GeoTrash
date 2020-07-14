@@ -53,7 +53,7 @@ export class MapContainer extends Component {
     const mapStyles = {
       width: '70%',
       height: '70%',
-      margin: '150px 15%',
+      margin: '5% 15%',
       borderRadius: '10px',
     };
 
