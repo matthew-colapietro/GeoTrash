@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 //import { connect } from "react-redux";
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 
 
 export class MapContainer extends Component {
@@ -12,17 +12,39 @@ export class MapContainer extends Component {
         { lat: 35.780313, lng: -78.639144 },
         { lat: 35.769027, lng: -78.722105 },
         { lat: 35.760321, lng: -78.720989 }
-      ]
+      ],
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {} 
     }
   }
+
+  onMarkerClick = (props, marker, e) =>
+  this.setState({
+    selectedPlace: props,
+    activeMarker: marker,
+    showingInfoWindow: true
+  });
+
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
 
   displayMarkers = () => {
     return this.state.trashLocations.map((location, index) => {
       return <Marker key={index} id={index} position = {{
         lat: location.lat,
         lng: location.lng
-      }}
-      onClick={() => console.log("Location Clicked")} />
+        }}
+        
+        onClick={this.onMarkerClick}>
+          
+        </Marker>
     })
   }
 
@@ -45,6 +67,17 @@ export class MapContainer extends Component {
         center={{ lat: 35.780313, lng: -78.639144 }}
       >
         {this.displayMarkers()}
+
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        >
+          <div>
+            <h4>something</h4>
+          </div>
+        </InfoWindow>
+
       </Map>
     )
   }
