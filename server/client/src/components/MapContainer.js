@@ -11,7 +11,7 @@ export class MapContainer extends Component {
       trashLocations: [
         { lat: 35.780313, lng: -78.639144, name: "Raleigh" },
         { lat: 35.769027, lng: -78.722105, name: "Walnut Springs Long Bridge" },
-        { lat: 35.760321, lng: -78.720989, name: "Your Mom" }
+        { lat: 35.760321, lng: -78.720989, name: "My hometown" }
       ],
       showingInfoWindow: false,
       activeMarker: {},
@@ -64,7 +64,7 @@ export class MapContainer extends Component {
         zoom={12}
         style={mapStyles}
         initialCenter={{ lat: 35.780313, lng: -78.639144 }}
-        center={{ lat: 35.780313, lng: -78.639144 }}
+        // center={{ lat: 35.780313, lng: -78.639144 }}
       >
         {this.displayMarkers()}
 
