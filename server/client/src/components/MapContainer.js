@@ -50,7 +50,6 @@ export class MapContainer extends Component {
 
   render() {
     console.log(`rendering map container`)
-    console.log(this.props.latitude, this.props.longitude)
     const mapStyles = {
       width: '70%',
       height: '70%',
@@ -59,26 +58,29 @@ export class MapContainer extends Component {
     };
 
     return (
-      <Map
-        google={this.props.google}
-        zoom={12}
-        style={mapStyles}
-        initialCenter={{ lat: 35.780313, lng: -78.639144 }}
-        // center={{ lat: 35.780313, lng: -78.639144 }}
-      >
-        {this.displayMarkers()}
-
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
+      <div className= "row justify-content-center">
+        <Map
+          className = "col-md-12"
+          google={this.props.google}
+          zoom={12}
+          style={mapStyles}
+          initialCenter={{ lat: 35.780313, lng: -78.639144 }}
+          // center={{ lat: 35.780313, lng: -78.639144 }}
         >
-          <div>
-            <h3>{this.state.selectedPlace.name}</h3>
-          </div>
-        </InfoWindow>
+          {this.displayMarkers()}
 
-      </Map>
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.onClose}
+          >
+            <div>
+              <h3>{this.state.selectedPlace.name}</h3>
+            </div>
+          </InfoWindow>
+
+        </Map>
+      </div>
     )
   }
 }
