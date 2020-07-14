@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.css';
+import '../styling/Form.css'
 
 
 class Form extends Component {
@@ -22,7 +23,7 @@ class Form extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="main-form row">
     
         <div className="col-md-12">
           

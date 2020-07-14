@@ -1,0 +1,5 @@
+.main-form {
+  background-image: url("https://www.thewpf.org/wp-content/uploads/2018/11/Boom-update-2_7.26.18-Resized.jpg");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}

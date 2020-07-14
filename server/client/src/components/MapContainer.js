@@ -51,9 +51,9 @@ export class MapContainer extends Component {
   render() {
     console.log(`rendering map container`)
     const mapStyles = {
-      width: '100%',
-      height: '100%',
-      margin: '0%',
+      width: '80%',
+      height: '90%',
+      margin: '10%',
       borderRadius: '10px',
     };
 
