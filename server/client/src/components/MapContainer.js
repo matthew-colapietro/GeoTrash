@@ -9,9 +9,9 @@ export class MapContainer extends Component {
 
     this.state = {
       trashLocations: [
-        { lat: 35.780313, lng: -78.639144 },
-        { lat: 35.769027, lng: -78.722105 },
-        { lat: 35.760321, lng: -78.720989 }
+        { lat: 35.780313, lng: -78.639144, name: "Raleigh" },
+        { lat: 35.769027, lng: -78.722105, name: "Walnut Springs Long Bridge" },
+        { lat: 35.760321, lng: -78.720989, name: "Your Mom" }
       ],
       showingInfoWindow: false,
       activeMarker: {},
@@ -37,13 +37,13 @@ export class MapContainer extends Component {
 
   displayMarkers = () => {
     return this.state.trashLocations.map((location, index) => {
-      return <Marker key={index} id={index} position = {{
+      return <Marker key={index} id={index} name={location.name} position = {{
         lat: location.lat,
         lng: location.lng
         }}
         
         onClick={this.onMarkerClick}>
-          
+
         </Marker>
     })
   }
@@ -74,7 +74,7 @@ export class MapContainer extends Component {
           onClose={this.onClose}
         >
           <div>
-            <h4>something</h4>
+            <h3>{this.state.selectedPlace.name}</h3>
           </div>
         </InfoWindow>
 
