@@ -10,10 +10,12 @@ class Form extends Component {
 
     this.state = {
       id: null,
-      profileImage: '',
-      name: '',
+      reporterName: '',
       phoneNumber: null,
-      email: ''
+      email: '',
+      trashImage: '',
+      trashQuantity: null,
+      hazardnessLevel: '',
     }
 
   }
@@ -34,7 +36,7 @@ class Form extends Component {
             <div className="col-md-5 offset-md-1">
               <label><strong>Reporter name</strong></label>
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' onChange={event => this.setState({ name: event.target.value })
+              <input type='text' className='form-control' onChange={event => this.setState({ reporterName: event.target.value })
               }/>
 
               <br/>
@@ -58,21 +60,21 @@ class Form extends Component {
             <div className="col-md-5 pl-2">
               <label><strong>Image of Trash</strong></label>
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="Optional" onChange={event => this.setState({ profileImage: event.target.value })
+              <input type='text' className='form-control' placeholder="Optional" onChange={event => this.setState({ trashImage: event.target.value })
               }/>
 
               <br />
 
               <label><strong>Quantity of Trash</strong></label>
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' onChange={event => this.setState({ profileImage: event.target.value })
+              <input type='text' className='form-control' onChange={event => this.setState({ trashQuantity: parseInt(event.target.value, 10) })
               }/>
 
               <br />
 
               <label><strong>Hazardness Level</strong></label>
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' onChange={event => this.setState({ profileImage: event.target.value })
+              <input type='text' className='form-control' onChange={event => this.setState({ hazardnessLevel: event.target.value })
               }/>
 
               {/* button to handle the start of the function that will pass 
