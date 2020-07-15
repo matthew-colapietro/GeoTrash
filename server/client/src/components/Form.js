@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styling/Form.css'
 
+import { addTrashInformation } from "../actions"
+
 
 class Form extends Component {
   constructor() {
@@ -17,8 +19,15 @@ class Form extends Component {
       trashImage: '',
       trashQuantity: null,
       hazardnessLevel: '',
+      longitude: null,
+      latitude: null
     }
 
+    this.handleSubmitNewTrash = this.handleSubmitNewTrash.bind(this);
+  }
+
+  handleSubmitNewTrash () {
+    console.log(this.state)
   }
 
   render() {
@@ -28,30 +37,37 @@ class Form extends Component {
         <div className="col-md-12">
           
           <div className="page-header text-center mt-5">
-            <h2>Submit New Trash Location</h2>
+            <h2 className="pb-3"><span>Submit New Trash Location</span></h2>
           </div>
 
            {/* form to hold the values the user will submit to add a new contact */}
           <form className="row">
             
             <div className="col-md-5 offset-md-1">
-              <label><strong>Reporter name</strong></label>
+              {/* <label><strong>Reporter name</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' onChange={event => this.setState({ reporterName: event.target.value })
+              <input type='text' className='form-control' placeholder="Reporter Name" onChange={event => this.setState({ reporterName: event.target.value })
               }/>
 
               <br/>
 
-              <label><strong>Contact Number</strong></label>
+              {/* <label><strong>Contact Number</strong></label> */}
               {/* changing the phone number input to an integer to add to the state */}
-              <input type='text' className='form-control' onChange={event => this.setState({ phoneNumber: parseInt(event.target.value, 10) })
+              <input type='text' className='form-control' placeholder="Contact Number" onChange={event => this.setState({ phoneNumber: parseInt(event.target.value, 10) })
               }/>
 
               <br/>
 
-              <label><strong>Contact Email</strong></label>
+              {/* <label><strong>Contact Email</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' onChange={event => this.setState({ email: event.target.value })
+              <input type='text' className='form-control' placeholder="Email" onChange={event => this.setState({ email: event.target.value })
+              }/>
+
+              <br/>
+
+              {/* <label><strong>Longitude</strong></label> */}
+              {/* updating the state with the value of the input */}
+              <input type='text' className='form-control' placeholder="longitude" onChange={event => this.setState({ longitude: parseInt(event.target.value, 10) })
               }/>
 
             </div>
@@ -59,28 +75,36 @@ class Form extends Component {
             <br/>
             
             <div className="col-md-5 pl-2">
-              <label><strong>Image of Trash</strong></label>
+              {/* <label><strong>Image of Trash</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="Optional" onChange={event => this.setState({ trashImage: event.target.value })
+              <input type='text' className='form-control' placeholder="Image of Trash (Optional)" onChange={event => this.setState({ trashImage: event.target.value })
               }/>
 
               <br />
 
-              <label><strong>Quantity of Trash</strong></label>
+              {/* <label><strong>Quantity of Trash</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' onChange={event => this.setState({ trashQuantity: parseInt(event.target.value, 10) })
+              <input type='text' className='form-control' placeholder="Quantity of Trash" onChange={event => this.setState({ trashQuantity: parseInt(event.target.value, 10) })
               }/>
 
               <br />
 
-              <label><strong>Hazardness Level</strong></label>
+              {/* <label><strong>Hazardness Level</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' onChange={event => this.setState({ hazardnessLevel: event.target.value })
+              <input type='text' className='form-control' placeholder="Hazardness Level" onChange={event => this.setState({ hazardnessLevel: event.target.value })
+              }/>
+
+              <br/>
+
+              {/* <label><strong>Latitude</strong></label> */}
+              {/* updating the state with the value of the input */}
+              <input type='text' className='form-control' placeholder="latitude" onChange={event => this.setState({ latitude: parseInt(event.target.value, 10) })
               }/>
 
               {/* button to handle the start of the function that will pass 
               the new contact info to App.js */}
-              <button className="submit-contact mt-3" type="button" onClick={this.handleSubmitNewContact}>Submit</button>
+              <button className="submit-contact mt-3" type="button" onClick={this.handleSubmitNewTrash}>Submit</button>
+
             </div>
           </form>
 
@@ -91,4 +115,12 @@ class Form extends Component {
   }
 }
 
-export default Form;
+function mapStateToProps(state) {
+  return { trash: state.trash};
+}
+
+function mapDispatchToProp(dispatch) {
+  return bindActionCreators({ addTrashInformation }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProp)(Form);

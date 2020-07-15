@@ -8,7 +8,7 @@ const ROOT_URL = 'http://localhost:8000/trash'
 
 //API pull for Products information
 export function addTrashInformation(reporterName, phoneNumber, email, trashImage, trashQuantity, hazardnessLevel, longitude, latitude) {
-  console.log(`fetching products with: ${category}, ${sort}`)
+  console.log(`posting trash with: ${reporterName}, ${phoneNumber}, ${trashQuantity}`)
   const url = `${ROOT_URL}/`
   
   const request = axios.get({
