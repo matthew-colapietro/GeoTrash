@@ -4,9 +4,12 @@ import { CREATE_TRASH, GET_TRASH } from '../actions/index';
 export default function(state = [], action) {
   switch (action.type) {
     case CREATE_TRASH:
-      return action.payload.data;
+      return action.payload.data
     case GET_TRASH:
-      return action.payload.data;
+      if (action.payload.data) {
+        console.log("Action.payload.data is: ", action.payload.data)
+      };
+      return action.payload.data
     default:
       return state;
   }

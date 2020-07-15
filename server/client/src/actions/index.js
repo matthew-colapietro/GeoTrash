@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const CREATE_TRASH = 'CREATE_TRASH';
+export const GET_TRASH = 'GET_TRASH';
 
 
 //const API_KEY = ''; API KEY NOT NEEDED
@@ -31,5 +32,16 @@ export function addTrashInformation(reporterName, phoneNumber, email, trashImage
   return {
     type: CREATE_TRASH,
     payload: request
+  };
+}
+
+export function getTrashData() {
+  console.log('GETTING trash data via getTrashData action');
+  const url = `${ROOT_URL}/`
+  const request = axios.get(url);
+
+  return {
+    type: GET_TRASH,
+    payload: request,
   };
 }

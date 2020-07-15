@@ -30,4 +30,15 @@ router.post('/trash/', (req, res, next) => {
   res.send(`Added New Trash by: ${trash.reporterName}`)
 });
 
+router.get('/trash/', (req, res, next) => {
+  
+  Trash
+    .find({})
+    .exec((err, trashes) => {
+      if (err) return next(err)
+
+      res.send({trashes})
+    })
+})
+
 module.exports = router
