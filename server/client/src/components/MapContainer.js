@@ -16,7 +16,9 @@ export class MapContainer extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {} 
-    }
+    };
+
+    this.handleMapClick = this.handleMapClick.bind(this);
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -46,6 +48,10 @@ export class MapContainer extends Component {
 
         </Marker>
     })
+  };
+
+  handleMapClick = (e) => {
+    // console.log(latLng.lat())
   }
 
   render() {
@@ -66,8 +72,11 @@ export class MapContainer extends Component {
           style={mapStyles}
           initialCenter={{ lat: 35.780313, lng: -78.639144 }}
           // center={{ lat: 35.780313, lng: -78.639144 }}
+          onClick={this.handleMapClick()}
         >
           {this.displayMarkers()}
+
+          
 
           <InfoWindow
             marker={this.state.activeMarker}
