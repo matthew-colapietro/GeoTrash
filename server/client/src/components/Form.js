@@ -12,12 +12,11 @@ class Form extends Component {
     super();
 
     this.state = {
-      id: null,
       reporterName: '',
       phoneNumber: null,
       email: '',
       trashImage: '',
-      trashQuantity: null,
+      trashQuantity: '',
       hazardnessLevel: '',
       longitude: null,
       latitude: null
@@ -27,7 +26,16 @@ class Form extends Component {
   }
 
   handleSubmitNewTrash () {
-    console.log(this.state)
+    if(!this.state.reporterName || !this.state.phoneNumber || !this.state.email || !this.state.trashImage || !this.state.trashQuantity || !this.state.hazardnessLevel || !this.state.longitude || !this.state.latitude) {
+      alert('Please ensure all fields are entered')
+      return console.log(this.state)
+    } else {
+      this.props.addTrashInformation(this.state.reporterName, this.state.phoneNumber, this.state.email, this.state.trashImage, this.state.trashQuantity, this.state.hazardnessLevel, this.state.longitude, this.state.latitude)
+      console.log(this.state)
+    }
+    
+    
+    
   }
 
   render() {
@@ -67,7 +75,7 @@ class Form extends Component {
 
               {/* <label><strong>Longitude</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="longitude" onChange={event => this.setState({ longitude: parseInt(event.target.value, 10) })
+              <input type='text' className='form-control' placeholder="longitude" onChange={event => this.setState({ longitude: parseFloat(event.target.value) })
               }/>
 
             </div>
@@ -77,14 +85,14 @@ class Form extends Component {
             <div className="col-md-5 pl-2">
               {/* <label><strong>Image of Trash</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="Image of Trash (Optional)" onChange={event => this.setState({ trashImage: event.target.value })
+              <input type='text' className='form-control' placeholder="Image of Trash" onChange={event => this.setState({ trashImage: event.target.value })
               }/>
 
               <br />
 
               {/* <label><strong>Quantity of Trash</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="Quantity of Trash" onChange={event => this.setState({ trashQuantity: parseInt(event.target.value, 10) })
+              <input type='text' className='form-control' placeholder="Quantity of Trash" onChange={event => this.setState({ trashQuantity: event.target.value })
               }/>
 
               <br />
@@ -98,7 +106,7 @@ class Form extends Component {
 
               {/* <label><strong>Latitude</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="latitude" onChange={event => this.setState({ latitude: parseInt(event.target.value, 10) })
+              <input type='text' className='form-control' placeholder="latitude" onChange={event => this.setState({ latitude: parseFloat(event.target.value) })
               }/>
 
               {/* button to handle the start of the function that will pass 

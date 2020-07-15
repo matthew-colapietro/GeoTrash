@@ -11,7 +11,7 @@ export function addTrashInformation(reporterName, phoneNumber, email, trashImage
   console.log(`posting trash with: ${reporterName}, ${phoneNumber}, ${trashQuantity}`)
   const url = `${ROOT_URL}/`
   
-  const request = axios.get({
+  const request = axios({
     method: "post",
     url: url,
     data: {
