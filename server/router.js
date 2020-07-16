@@ -4,7 +4,6 @@ const { Trash } = require("./models/TrashSchema");
 
 //Set up routes
 
-
 router.post('/trash/', (req, res, next) => {
   //send back error if all product info is not completed
   // if (!req.body.category || !req.body.name || !req.body.price || !req.body.image) {

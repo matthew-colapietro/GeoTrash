@@ -73,34 +73,40 @@ class Form extends Component {
 
               <br/>
 
-              {/* <label><strong>Longitude</strong></label> */}
+              {/* <label><strong>Image of Trash</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="longitude" onChange={event => this.setState({ longitude: parseFloat(event.target.value) })
+              <input type='text' className='form-control' placeholder="Image of Trash" onChange={event => this.setState({ trashImage: event.target.value })
               }/>
+
+              
 
             </div>
 
             <br/>
             
             <div className="col-md-5 pl-2">
-              {/* <label><strong>Image of Trash</strong></label> */}
-              {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="Image of Trash" onChange={event => this.setState({ trashImage: event.target.value })
-              }/>
-
-              <br />
 
               {/* <label><strong>Quantity of Trash</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="Quantity of Trash" onChange={event => this.setState({ trashQuantity: event.target.value })
-              }/>
+              <select type='text' className='form-control' placeholder="Quantity of Trash" onChange={event => this.setState({ trashQuantity: event.target.value })}>
+              <option value="" disabled selected>Quantity of Trash (Please choose one of the options)</option>
+                <option value="Low">Low (Less than 1-2 trash bags needed)</option>
+                <option value="Moderate">Moderate (2-3 trash bags likely needed)</option>
+                <option value="High">High (4+ trash bags needed and/or giant items such as a car tire) </option>
+                <option value="Severe">Severe (a whole truck bed might not be enough room)</option>
+              </select>
 
               <br />
 
               {/* <label><strong>Hazardness Level</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="Hazardness Level" onChange={event => this.setState({ hazardnessLevel: event.target.value })
-              }/>
+              <select className="form-control" name='category' onChange={event => this.setState({ hazardnessLevel: event.target.value })} >
+                <option value="" disabled selected>Hazardness Level (Please choose one of the options)</option>
+                <option value="Low">Low (General Plastic and Paper Waste)</option>
+                <option value="Moderate">Moderate (Household chemical containers)</option>
+                <option value="High">High (Industrial Supplies and Materials) </option>
+                <option value="Severe">Severe (biohazard waste (needles, etc), industrial chemicals)</option>
+              </select>
 
               <br/>
 
@@ -109,8 +115,15 @@ class Form extends Component {
               <input type='text' className='form-control' placeholder="latitude" onChange={event => this.setState({ latitude: parseFloat(event.target.value) })
               }/>
 
+              <br/>
+
+              {/* <label><strong>Longitude</strong></label> */}
+              {/* updating the state with the value of the input */}
+              <input type='text' className='form-control' placeholder="longitude" onChange={event => this.setState({ longitude: parseFloat(event.target.value) })
+              }/>
+
               {/* button to handle the start of the function that will pass 
-              the new contact info to App.js */}
+              the new trash info to database */}
               <button className="submit-contact mt-3" type="button" onClick={this.handleSubmitNewTrash}>Submit</button>
 
             </div>

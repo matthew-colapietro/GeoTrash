@@ -46,7 +46,7 @@ export class MapContainer extends Component {
 
   displayMarkers = () => {
     return this.props.trash.trashes.map((location, index) => {
-      return <Marker key={index} id={index} name={location.reporterName} bananas={location.trashImage} position = {{
+      return <Marker key={index} id={index} name={location.reporterName} image={location.trashImage} position = {{
         lat: location.latitude,
         lng: location.longitude
         }}
@@ -100,7 +100,7 @@ export class MapContainer extends Component {
           >
             <div>
               <h3>Reporter: {this.state.selectedPlace.name}</h3>
-              <img src={this.state.selectedPlace.bananas} />
+              <img src={this.state.selectedPlace.image} />
             </div>
           </InfoWindow>
 
