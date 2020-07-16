@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import "../styling/Header.css";
 import { Link } from "react-router-dom";
 
-import AdminPage from "./AdminPage";
-
 
 class Header extends Component {
   render() {
@@ -11,7 +9,7 @@ class Header extends Component {
       <div id="header">
         
         <Link to="/admin">
-          <img id="admin-button"/>
+          <button className="btn btn-info" id="admin-button" alt="The admin button">Land Management</button>
         </Link>
       </div>
     );

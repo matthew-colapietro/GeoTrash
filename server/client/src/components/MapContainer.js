@@ -11,11 +11,11 @@ export class MapContainer extends Component {
     super(props);
 
     this.state = {
-      trashLocations: [
-        { lat: 35.780313, lng: -78.639144, name: "Raleigh" },
-        { lat: 35.769027, lng: -78.722105, name: "Walnut Springs Long Bridge" },
-        { lat: 35.760321, lng: -78.720989, name: "My hometown" }
-      ],
+      // trashLocations: [
+      //   { lat: 35.780313, lng: -78.639144, name: "Raleigh" },
+      //   { lat: 35.769027, lng: -78.722105, name: "Walnut Springs Long Bridge" },
+      //   { lat: 35.760321, lng: -78.720989, name: "My hometown" }
+      // ],
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {} 
@@ -100,7 +100,7 @@ export class MapContainer extends Component {
           >
             <div>
               <h3>Reporter: {this.state.selectedPlace.name}</h3>
-              <img src={this.state.selectedPlace.image} />
+              <img src={this.state.selectedPlace.image} alt="specific trash" />
             </div>
           </InfoWindow>
 

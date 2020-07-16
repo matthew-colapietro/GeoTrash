@@ -12,40 +12,13 @@
   height: 50px;
 }
 
-#user-words {
-  margin: 0 0 0 0;
-  display: inline-block;
-}
-
-#user-words p {
-  color: var(--main);
-}
-
-#user-name {
-  font-size: 1.1em;
-  font-weight: 300;
-  margin: 0 0 0 0;
-}
-
-#user-byline {
-  font-size: 0.9em;
-  font-weight: 100;
-  line-height: 1em;
-}
 
 #admin-button {
   float: right;
-  height: 35px;
-  width: 35px;
-  border-radius: 35px;
-  background-color: var(--main);
-  margin: 4px 15px 0 10px;
+  height: 80%;
+  /* width: 10%;
+  border-radius: 0%; */
+  /* padding: 4px 15px 0 10px; */
+  margin: .2% .2%
 }
 
-#user-circle p {
-  color: white;
-  font-size: 1.3em;
-  font-weight: 100;
-  text-align: center;
-  margin-top: 3px;
-}

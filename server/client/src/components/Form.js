@@ -18,8 +18,8 @@ class Form extends Component {
       trashImage: '',
       trashQuantity: '',
       hazardnessLevel: '',
-      longitude: null,
-      latitude: null
+      latitude: null,
+      longitude: null
     }
 
     this.handleSubmitNewTrash = this.handleSubmitNewTrash.bind(this);
@@ -42,7 +42,7 @@ class Form extends Component {
     return (
       <div className="main-form row">
     
-        <div className="col-md-12">
+        <div className="col-md-12" id="form-input">
           
           <div className="page-header text-center mt-5">
             <h2 className="pb-3"><span>Submit New Trash Location</span></h2>
