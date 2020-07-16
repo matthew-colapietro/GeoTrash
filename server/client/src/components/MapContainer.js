@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-//import { connect } from "react-redux";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+
+import { getTrashData } from "../actions"  
 
 
 export class MapContainer extends Component {
@@ -37,11 +40,15 @@ export class MapContainer extends Component {
     }
   };
 
+  componentDidMount() {
+    this.props.getTrashData();
+  }
+
   displayMarkers = () => {
-    return this.state.trashLocations.map((location, index) => {
-      return <Marker key={index} id={index} name={location.name} position = {{
-        lat: location.lat,
-        lng: location.lng
+    return this.props.trash.trashes.map((location, index) => {
+      return <Marker key={index} id={index} name={location.reporterName} bananas={location.trashImage} position = {{
+        lat: location.latitude,
+        lng: location.longitude
         }}
         
         onClick={this.onMarkerClick}>
@@ -63,6 +70,13 @@ export class MapContainer extends Component {
       borderRadius: '10px',
     };
 
+    //display "loading" text if props does not yet contain data
+    if (!this.props.trash.trashes) {
+      return (
+        <h1>Loading...</h1>
+      )
+    }
+
     return (
       <div className= "row justify-content-center">
         <Map
@@ -74,6 +88,7 @@ export class MapContainer extends Component {
           // center={{ lat: 35.780313, lng: -78.639144 }}
           onClick={this.handleMapClick()}
         >
+          {console.log(this.props.trash.trashes)}
           {this.displayMarkers()}
 
           
@@ -84,7 +99,8 @@ export class MapContainer extends Component {
             onClose={this.onClose}
           >
             <div>
-              <h3>{this.state.selectedPlace.name}</h3>
+              <h3>Reporter: {this.state.selectedPlace.name}</h3>
+              <img src={this.state.selectedPlace.bananas} />
             </div>
           </InfoWindow>
 
@@ -94,6 +110,15 @@ export class MapContainer extends Component {
   }
 }
 
-export default GoogleApiWrapper({
+function mapStateToProps(state) {
+  return { trash: state.trash};
+}
+
+function mapDispatchToProp(dispatch) {
+  return bindActionCreators({ getTrashData }, dispatch);
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProp)(GoogleApiWrapper({
   apiKey: 'AIzaSyASqfYqXSpj9Hmn3hrPiu8RwOXxxmOhyLE'
-})(MapContainer);
+})(MapContainer));
