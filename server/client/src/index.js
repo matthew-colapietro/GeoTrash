@@ -7,12 +7,15 @@ import reducers from "./reducers"
 import 'bootstrap/dist/css/bootstrap.css';
 
 import App from "./components/App"
+import { BrowserRouter } from "react-router-dom";
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
