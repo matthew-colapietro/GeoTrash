@@ -134,7 +134,7 @@ class AdminPage extends Component {
           </table>
         </div>
 
-        {/* <MapContainer /> */}
+        <MapContainer />
 
       </div>
 
