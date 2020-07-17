@@ -10,7 +10,7 @@ const ROOT_URL = 'http://localhost:8000/trash'
 //API pull for Products information
 export function addTrashInformation(reporterName, phoneNumber, email, trashImage, trashQuantity, hazardnessLevel, longitude, latitude) {
   console.log(`posting trash with: ${reporterName}, ${phoneNumber}, ${trashQuantity}`)
-  const url = `${ROOT_URL}/`
+  const url = `${ROOT_URL}`
   
   const request = axios({
     method: "post",
@@ -35,9 +35,9 @@ export function addTrashInformation(reporterName, phoneNumber, email, trashImage
   };
 }
 
-export function getTrashData() {
-  console.log('GETTING trash data via getTrashData action');
-  const url = `${ROOT_URL}/`
+export function getTrashData(hazardnessLevel) {
+  console.log(`GETTING trash data via getTrashData action with properties: ${hazardnessLevel}`);
+  const url = `${ROOT_URL}/?hazardnessLevel=${hazardnessLevel}`
   const request = axios.get(url);
 
   return {

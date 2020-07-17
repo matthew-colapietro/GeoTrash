@@ -23,7 +23,20 @@ class AdminPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getTrashData();
+    this.props.getTrashData('');
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    //first ensure componentDidUpdate is not checking updating on first API pull
+    if (!prevProps.trash) {
+      console.log('first update')
+      //checking state to see if any changes have been made
+      //based on changes to the form in the render function
+    } else if (prevState.reporterName !== this.state.reporterName || prevState.quantityOfTrash !== this.state.quantityOfTrash || 
+              prevState.hazardnessLevel !== this.state.hazardnessLevel){
+      
+      this.props.getTrashData(this.state.hazardnessLevel);
+    }
   }
 
   displayTable() {
@@ -78,7 +91,7 @@ class AdminPage extends Component {
 
             {/* category selection changes will be stored in state */}
             <label className="mr-2">Filter by Trash Hazard Level</label>
-            <select className="mr-4" name="category" onChange={event => this.setState({ category: event.target.value }) }>
+            <select className="mr-4" name="category" onChange={event => this.setState({ hazardnessLevel: event.target.value }) }>
               <option value=""></option>
               <option value="Low">Low</option>
               <option value="Moderate">Moderate</option>
@@ -117,7 +130,7 @@ class AdminPage extends Component {
           </table>
         </div>
 
-        <MapContainer />
+        {/* <MapContainer /> */}
 
       </div>
 
