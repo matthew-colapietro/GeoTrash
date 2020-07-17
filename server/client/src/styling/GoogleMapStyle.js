@@ -213,3 +213,5 @@ const customGoogleMapStyle = [
     ]
   }
 ]
+
+export { customGoogleMapStyle }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+// import { customGoogleMapStyle } from '../styling/GoogleMapStyle'
 
 import { getTrashData } from "../actions"  
 
@@ -41,7 +42,7 @@ export class MapContainer extends Component {
   };
 
   componentDidMount() {
-    this.props.getTrashData();
+    this.props.getTrashData('');
   }
 
   displayMarkers = () => {
@@ -83,7 +84,7 @@ export class MapContainer extends Component {
           className = "col-md-12"
           google={this.props.google}
           zoom={12}
-          style={mapStyles}
+          style = {mapStyles}
           initialCenter={{ lat: 35.780313, lng: -78.639144 }}
           // center={{ lat: 35.780313, lng: -78.639144 }}
           onClick={this.handleMapClick()}

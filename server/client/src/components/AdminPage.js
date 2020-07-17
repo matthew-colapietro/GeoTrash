@@ -15,7 +15,7 @@ class AdminPage extends Component {
 
     this.state = {
       reporterName: '',
-      quantityOfTrash: '',
+      trashQuantity: '',
       hazardnessLevel: '',
     }
 
@@ -23,7 +23,7 @@ class AdminPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getTrashData('');
+    this.props.getTrashData('','');
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -32,10 +32,10 @@ class AdminPage extends Component {
       console.log('first update')
       //checking state to see if any changes have been made
       //based on changes to the form in the render function
-    } else if (prevState.reporterName !== this.state.reporterName || prevState.quantityOfTrash !== this.state.quantityOfTrash || 
+    } else if (prevState.reporterName !== this.state.reporterName || prevState.trashQuantity !== this.state.trashQuantity || 
               prevState.hazardnessLevel !== this.state.hazardnessLevel){
-      
-      this.props.getTrashData(this.state.hazardnessLevel);
+      console.log(this.state)
+      this.props.getTrashData(this.state.hazardnessLevel, this.state.trashQuantity);
     }
   }
 
@@ -81,7 +81,7 @@ class AdminPage extends Component {
             
             {/* category selection changes will be stored in state */}
             <label className="mr-2">Filter by Trash Quantity</label>
-            <select className="mr-4" name="category" onChange={event => this.setState({ category: event.target.value }) }>
+            <select className="mr-4" name="category" onChange={event => this.setState({ trashQuantity: event.target.value }) }>
               <option value=""></option>
               <option value="Low">Low</option>
               <option value="Moderate">Moderate</option>
