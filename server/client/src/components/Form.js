@@ -19,7 +19,8 @@ class Form extends Component {
       trashQuantity: '',
       hazardnessLevel: '',
       latitude: null,
-      longitude: null
+      longitude: null,
+      submissionDate: ''
     }
 
     this.handleSubmitNewTrash = this.handleSubmitNewTrash.bind(this);
@@ -28,14 +29,20 @@ class Form extends Component {
   handleSubmitNewTrash () {
     if(!this.state.reporterName || !this.state.phoneNumber || !this.state.email || !this.state.trashImage || !this.state.trashQuantity || !this.state.hazardnessLevel || !this.state.longitude || !this.state.latitude) {
       alert('Please ensure all fields are entered')
+      this.getDate()
       return console.log(this.state)
     } else {
       this.props.addTrashInformation(this.state.reporterName, this.state.phoneNumber, this.state.email, this.state.trashImage, this.state.trashQuantity, this.state.hazardnessLevel, this.state.longitude, this.state.latitude)
       console.log(this.state)
     }
-    
-    
-    
+  }
+
+  getDate() {
+    let currentTime = new Date().toLocaleDateString();
+    let currentDate = new Date().toDateString();
+    let anothertest = new Date().toTimeString();
+
+    console.log(anothertest)
   }
 
   render() {

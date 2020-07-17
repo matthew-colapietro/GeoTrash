@@ -84,8 +84,8 @@ export class MapContainer extends Component {
 
     return (
       <div>
-        <div className="row justify-content-center">
-          <p>Click on map to find the Latitude and Longitude of your location</p>
+        <div className="row justify-content-center pt-2">
+          <p><strong>Click on map to find the Latitude and Longitude of your location</strong></p>
         </div>
         <div className="row justify-content-center">
           <h5> Latitude: {this.state.userClickedLatitude} </h5>
