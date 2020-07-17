@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import Header from "./Header"
+import Header from "./Header";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getTrashData } from "../actions"  
+import { getTrashData } from "../actions" ; 
 import { Link } from "react-router-dom";
 import MapContainer  from "./MapContainer";
 
 import 'bootstrap/dist/css/bootstrap.css';
+import '../styling/AdminPage.css';
 
 
 class AdminPage extends Component {
@@ -68,9 +69,12 @@ class AdminPage extends Component {
         <Header />
         {console.log(this.props.trash.trashes)}
 
-        <Link to="/">
-          <p>Back</p>
-        </Link>
+        <div>
+          <Link to="/">
+            <button className="back-button">Back</button>
+          </Link>
+        </div>
+        
 
         <div className="row justify-content-md-center py-2">
           <form>
