@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 // import { customGoogleMapStyle } from '../styling/GoogleMapStyle'
 
-import { getTrashData } from "../actions"  
+import { getTrashData, setCoordinates } from "../actions"  
 
 
 export class MapContainer extends Component {
@@ -56,14 +56,17 @@ export class MapContainer extends Component {
   };
 
   handleMapClick = (ref, map, ev) => {
+    //creating variables for lat/long data
     const clickedLatitude = ev.latLng.lat();
     const clickedLongitude = ev.latLng.lng();
     
+    //updating state when map is clicked
     this.setState({
       userClickedLatitude: clickedLatitude,
       userClickedLongitude: clickedLongitude
     })
-    
+
+    this.props.setCoordinates(clickedLatitude, clickedLongitude)
   };
 
   render() {
@@ -85,7 +88,7 @@ export class MapContainer extends Component {
     return (
       <div>
         <div className="row justify-content-center pt-2">
-          <p><strong>Click on map to find the Latitude and Longitude of your location</strong></p>
+          <p><strong>Click on map to find the Latitude and Longitude</strong></p>
         </div>
         <div className="row justify-content-center">
           <h5> Latitude: {this.state.userClickedLatitude} </h5>
@@ -105,9 +108,8 @@ export class MapContainer extends Component {
             onClick={this.handleMapClick}
           >
             {console.log(this.props.trash.trashes)}
+            {/* calling function to display all locations in the database as a marker on map */}
             {this.displayMarkers()}
-
-            
 
             <InfoWindow
               marker={this.state.activeMarker}
@@ -128,11 +130,11 @@ export class MapContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  return { trash: state.trash};
+  return { trash: state.trash, };
 }
 
 function mapDispatchToProp(dispatch) {
-  return bindActionCreators({ getTrashData }, dispatch);
+  return bindActionCreators({ getTrashData, setCoordinates }, dispatch);
 }
 
 

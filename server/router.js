@@ -11,6 +11,8 @@ router.post('/trash/', (req, res, next) => {
   //   return res.end();
   // }
   
+  console.log(req.body.submissionDate)
+  
   let trash = new Trash()
 
   trash.reporterName = req.body.reporterName
@@ -21,12 +23,13 @@ router.post('/trash/', (req, res, next) => {
   trash.hazardnessLevel = req.body.hazardnessLevel
   trash.longitude = req.body.longitude
   trash.latitude = req.body.latitude
+  trash.submissionDate = req.body.submissionDate
 
   trash.save((err) => {
     if (err) throw err
   })
 
-  res.send(`Added New Trash by: ${trash.reporterName}`)
+  res.send(`Added New Trash by: ${trash.reporterName}, ${trash.submissionDate}`)
 });
 
 router.get('/trash/', (req, res, next) => {

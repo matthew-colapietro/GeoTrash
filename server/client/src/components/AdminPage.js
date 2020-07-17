@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import { getTrashData } from "../actions" ; 
 import { Link } from "react-router-dom";
 import MapContainer  from "./MapContainer";
+import Moment from 'react-moment'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styling/AdminPage.css';
@@ -44,9 +45,11 @@ class AdminPage extends Component {
     return this.props.trash.trashes.map((location, index) => {
       return (
         <tr>
-          <th>{index + 1}</th>
           <td>{location.reporterName}</td>
-          <td>{location.email}</td>
+          {/* Using moment.js to convert UTC date to readable format */}
+          <td><Moment format="YYYY/MM/DD">
+              {location.submissionDate}
+            </Moment></td>
           <td>{location.trashQuantity}</td>
           <td>{location.hazardnessLevel}</td>
           <td>{location.latitude}</td>
@@ -117,9 +120,8 @@ class AdminPage extends Component {
           <table className="table table-dark table-striped justify-content-center">
             <thead>
               <tr>
-                <th scope="col">ID #</th>
                 <th scope="col">Reporter Name</th>
-                <th scope="col">Email</th>
+                <th scope="col">Date Submitted</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Hazard Level</th>
                 <th scope="col">Latitude</th>

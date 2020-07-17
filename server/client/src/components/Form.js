@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styling/Form.css'
 
-import { addTrashInformation } from "../actions"
+import { addTrashInformation, setCoordinates } from "../actions"
 
 
 class Form extends Component {
@@ -18,31 +18,57 @@ class Form extends Component {
       trashImage: '',
       trashQuantity: '',
       hazardnessLevel: '',
-      latitude: null,
-      longitude: null,
       submissionDate: ''
     }
 
     this.handleSubmitNewTrash = this.handleSubmitNewTrash.bind(this);
+    this.updateLat = this.updateLat.bind(this);
+    this.updateLng = this.updateLng.bind(this);
+  }
+
+  updateLat () {
+    if (!this.props) {
+      return null
+    } else {
+      return this.props.coordinates.latitude
+    }
+  }
+
+  updateLng () {
+    if (!this.props) {
+      return null
+    } else {
+      return this.props.coordinates.longitude
+    }
   }
 
   handleSubmitNewTrash () {
-    if(!this.state.reporterName || !this.state.phoneNumber || !this.state.email || !this.state.trashImage || !this.state.trashQuantity || !this.state.hazardnessLevel || !this.state.longitude || !this.state.latitude) {
-      alert('Please ensure all fields are entered')
-      this.getDate()
+
+    let lat = this.updateLat()
+    let lng = this.updateLng()
+
+    if (lat === null || lng === null) {
+      return alert('Please click on the map to update where the trash will be located (This will fill in the Latitude & Longitude fields)');
+    }
+    
+    if(!this.state.reporterName || !this.state.phoneNumber || !this.state.email || !this.state.trashImage || !this.state.trashQuantity || !this.state.hazardnessLevel || this.props.coordinates) {
+      alert('Please ensure all fields are entered');
+      console.log(this.props.coordinates)
       return console.log(this.state)
+
     } else {
-      this.props.addTrashInformation(this.state.reporterName, this.state.phoneNumber, this.state.email, this.state.trashImage, this.state.trashQuantity, this.state.hazardnessLevel, this.state.longitude, this.state.latitude)
+      
+      this.props.addTrashInformation(this.state.reporterName, this.state.phoneNumber, this.state.email, this.state.trashImage, this.state.trashQuantity, this.state.hazardnessLevel, this.updateLat(), this.updateLng(), this.getDate())
       console.log(this.state)
+      
     }
   }
 
   getDate() {
-    let currentTime = new Date().toLocaleDateString();
-    let currentDate = new Date().toDateString();
-    let anothertest = new Date().toTimeString();
-
-    console.log(anothertest)
+    //getting current date and adding to state
+    //for submission to database
+    let currentDate = new Date()
+    return currentDate
   }
 
   render() {
@@ -57,7 +83,6 @@ class Form extends Component {
 
            {/* form to hold the values the user will submit to add a new contact */}
           <form className="row">
-            
             <div className="col-md-5 offset-md-1 pt-2">
               {/* <label><strong>Reporter name</strong></label> */}
               {/* updating the state with the value of the input */}
@@ -84,9 +109,6 @@ class Form extends Component {
               {/* updating the state with the value of the input */}
               <input type='text' className='form-control' placeholder="Image of Trash" onChange={event => this.setState({ trashImage: event.target.value })
               }/>
-
-              
-
             </div>
 
             <br/>
@@ -119,15 +141,15 @@ class Form extends Component {
 
               {/* <label><strong>Latitude</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="Latitude" onChange={event => this.setState({ latitude: parseFloat(event.target.value) })
-              }/>
+              <input type='text' readOnly className='form-control' placeholder={`Latitdue: ${this.updateLat()}`}
+              />
 
               <br/>
 
               {/* <label><strong>Longitude</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="Longitude" onChange={event => this.setState({ longitude: parseFloat(event.target.value) })
-              }/>
+              <input type='text' readOnly className='form-control' placeholder={`Longitude: ${this.updateLng()}`}
+              />
 
               {/* button to handle the start of the function that will pass 
               the new trash info to database */}
@@ -135,20 +157,18 @@ class Form extends Component {
 
             </div>
           </form>
-
         </div>
-
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { trash: state.trash};
+  return { trash: state.trash, coordinates: state.coordinates};
 }
 
 function mapDispatchToProp(dispatch) {
-  return bindActionCreators({ addTrashInformation }, dispatch);
+  return bindActionCreators({ addTrashInformation, setCoordinates }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProp)(Form);

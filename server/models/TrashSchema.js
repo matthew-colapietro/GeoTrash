@@ -10,7 +10,8 @@ const TrashSchema = new Schema({
   trashQuantity: String,
   hazardnessLevel: String,
   longitude: Number,
-  latitude: Number
+  latitude: Number,
+  submissionDate: Date,
 })
 
 
