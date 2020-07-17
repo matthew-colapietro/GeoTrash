@@ -33,6 +33,7 @@ router.get('/trash/', (req, res, next) => {
   //variables for trash search parameter setup
   let hazardnessLevel = {};
   let trashQuantity = {};
+  let reporterName = {};
 
   //Applying to the hazardnessLevel variable the value in the request query
   //for use in Trash.find() 
@@ -40,13 +41,22 @@ router.get('/trash/', (req, res, next) => {
     hazardnessLevel = {hazardnessLevel: req.query.hazardnessLevel}
   }
 
+  //Applying to the trashQuantity variable the value in the request query
+  //for use in Trash.find() 
   if (req.query.trashQuantity) {
     trashQuantity = {trashQuantity: req.query.trashQuantity}
+  }
+
+  //Applying to the query variable the value in the request query
+  //for use in Product.find() 
+  if (req.query.reporterName) {
+    reporterName = {"reporterName": { "$regex": req.query.reporterName, "$options": "i"} }
   }
 
   Trash
     .find(hazardnessLevel)
     .find(trashQuantity)
+    .find(reporterName)
     .exec((err, trashes) => {
       if (err) return next(err)
 

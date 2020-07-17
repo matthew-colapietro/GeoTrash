@@ -23,7 +23,7 @@ class AdminPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getTrashData('','');
+    this.props.getTrashData('','','');
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -35,7 +35,7 @@ class AdminPage extends Component {
     } else if (prevState.reporterName !== this.state.reporterName || prevState.trashQuantity !== this.state.trashQuantity || 
               prevState.hazardnessLevel !== this.state.hazardnessLevel){
       console.log(this.state)
-      this.props.getTrashData(this.state.hazardnessLevel, this.state.trashQuantity);
+      this.props.getTrashData(this.state.hazardnessLevel, this.state.trashQuantity, this.state.reporterName);
     }
   }
 
@@ -77,7 +77,7 @@ class AdminPage extends Component {
 
             {/* user's search bar entry will be stored in state */}
             <label className="mr-2">Search By User Name</label>
-            <input className="mr-4" type="search" onChange={event => this.setState({ query: event.target.value }) }></input>
+            <input className="mr-4" type="search" onChange={event => this.setState({ reporterName: event.target.value }) }></input>
             
             {/* category selection changes will be stored in state */}
             <label className="mr-2">Filter by Trash Quantity</label>

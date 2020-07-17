@@ -35,9 +35,9 @@ export function addTrashInformation(reporterName, phoneNumber, email, trashImage
   };
 }
 
-export function getTrashData(hazardnessLevel, trashQuantity) {
+export function getTrashData(hazardnessLevel, trashQuantity, reporterName) {
   console.log(`GETTING trash data via getTrashData action with properties: ${hazardnessLevel}`);
-  const url = `${ROOT_URL}/?hazardnessLevel=${hazardnessLevel}&trashQuantity=${trashQuantity}`
+  const url = `${ROOT_URL}/?hazardnessLevel=${hazardnessLevel}&trashQuantity=${trashQuantity}&reporterName=${reporterName}`
   const request = axios.get(url);
 
   return {
