@@ -51,7 +51,7 @@ class Form extends Component {
            {/* form to hold the values the user will submit to add a new contact */}
           <form className="row">
             
-            <div className="col-md-5 offset-md-1">
+            <div className="col-md-5 offset-md-1 pt-2">
               {/* <label><strong>Reporter name</strong></label> */}
               {/* updating the state with the value of the input */}
               <input type='text' className='form-control' placeholder="Reporter Name" onChange={event => this.setState({ reporterName: event.target.value })
@@ -84,7 +84,7 @@ class Form extends Component {
 
             <br/>
             
-            <div className="col-md-5 pl-2">
+            <div className="col-md-5 pl-2 pt-2">
 
               {/* <label><strong>Quantity of Trash</strong></label> */}
               {/* updating the state with the value of the input */}
@@ -124,7 +124,7 @@ class Form extends Component {
 
               {/* button to handle the start of the function that will pass 
               the new trash info to database */}
-              <button className="submit-contact mt-3" type="button" onClick={this.handleSubmitNewTrash}>Submit</button>
+              <button className="submit-contact-button mt-3" type="button" onClick={this.handleSubmitNewTrash}>Submit</button>
 
             </div>
           </form>

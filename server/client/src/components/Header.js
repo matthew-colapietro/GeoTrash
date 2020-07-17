@@ -9,7 +9,7 @@ class Header extends Component {
       <div id="header">
         
         <Link to="/admin">
-          <button className="btn btn-info" id="admin-button" alt="The admin button">Land Management</button>
+          <button className="admin-button" id="admin-button" alt="The admin button">Land Management</button>
         </Link>
       </div>
     );
