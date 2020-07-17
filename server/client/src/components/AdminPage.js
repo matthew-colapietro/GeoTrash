@@ -84,7 +84,7 @@ class AdminPage extends Component {
             <input className="mr-4" type="search" onChange={event => this.setState({ reporterName: event.target.value }) }></input>
             
             {/* category selection changes will be stored in state */}
-            <label className="mr-2">Filter by Trash Quantity</label>
+            <label className="mr-2">Filter by: Trash Quantity</label>
             <select className="mr-4" name="category" onChange={event => this.setState({ trashQuantity: event.target.value }) }>
               <option value=""></option>
               <option value="Low">Low</option>
@@ -94,7 +94,7 @@ class AdminPage extends Component {
             </select>
 
             {/* category selection changes will be stored in state */}
-            <label className="mr-2">Filter by Trash Hazard Level</label>
+            <label className="mr-2">Trash Hazard Level</label>
             <select className="mr-4" name="category" onChange={event => this.setState({ hazardnessLevel: event.target.value }) }>
               <option value=""></option>
               <option value="Low">Low</option>
@@ -104,17 +104,17 @@ class AdminPage extends Component {
             </select>
 
             {/* sort selection change will be changed in state */}
-            <label className="mr-2">sort by:</label>
+            {/* <label className="mr-2">sort by:</label>
             <select className="mr-4" id="cars" name="cars" onChange={event => this.setState({ sort: event.target.value }) }>
               <option value="highest">highest</option>
               <option value="lowest">lowest</option>
-            </select>
+            </select> */}
 
           </form>
         </div>
 
         <div>
-          <table className="table table-dark table-striped">
+          <table className="table table-dark table-striped justify-content-center">
             <thead>
               <tr>
                 <th scope="col">ID #</th>

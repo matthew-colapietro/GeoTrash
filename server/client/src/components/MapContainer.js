@@ -14,7 +14,9 @@ export class MapContainer extends Component {
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {} 
+      selectedPlace: {},
+      userClickedLatitude: null,
+      userClickedLongitude: null,
     };
 
     this.handleMapClick = this.handleMapClick.bind(this);
@@ -53,9 +55,16 @@ export class MapContainer extends Component {
     })
   };
 
-  handleMapClick = (e) => {
-    // console.log(latLng.lat())
-  }
+  handleMapClick = (ref, map, ev) => {
+    const clickedLatitude = ev.latLng.lat();
+    const clickedLongitude = ev.latLng.lng();
+    
+    this.setState({
+      userClickedLatitude: clickedLatitude,
+      userClickedLongitude: clickedLongitude
+    })
+    
+  };
 
   render() {
     console.log(`rendering map container`)
@@ -74,33 +83,45 @@ export class MapContainer extends Component {
     }
 
     return (
-      <div className= "row justify-content-center">
-        <Map
-          className = "col-md-12"
-          google={this.props.google}
-          zoom={12}
-          style = {mapStyles}
-          initialCenter={{ lat: 35.780313, lng: -78.639144 }}
-          // center={{ lat: 35.780313, lng: -78.639144 }}
-          onClick={this.handleMapClick()}
-        >
-          {console.log(this.props.trash.trashes)}
-          {this.displayMarkers()}
+      <div>
+        <div className="row justify-content-center">
+          <p>Click on map to find the Latitude and Longitude of your location</p>
+        </div>
+        <div className="row justify-content-center">
+          <h5> Latitude: {this.state.userClickedLatitude} </h5>
+        </div>
+        <div className="row justify-content-center">
+          <h5> Longitude: {this.state.userClickedLongitude} </h5>
+        </div>
 
-          
-
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-            onClose={this.onClose}
+        <div className= "row justify-content-center">
+          <Map
+            className = "col-md-12"
+            google={this.props.google}
+            zoom={10}
+            style = {mapStyles}
+            initialCenter={{ lat: 35.780313, lng: -78.639144 }}
+            // center={{ lat: 35.780313, lng: -78.639144 }}
+            onClick={this.handleMapClick}
           >
-            <div>
-              <h3>Reporter: {this.state.selectedPlace.name}</h3>
-              <img src={this.state.selectedPlace.image} alt="specific trash" />
-            </div>
-          </InfoWindow>
+            {console.log(this.props.trash.trashes)}
+            {this.displayMarkers()}
 
-        </Map>
+            
+
+            <InfoWindow
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}
+              onClose={this.onClose}
+            >
+              <div>
+                <h3>Reporter: {this.state.selectedPlace.name}</h3>
+                <img src={this.state.selectedPlace.image} alt="specific trash" />
+              </div>
+            </InfoWindow>
+
+          </Map>
+        </div>
       </div>
     )
   }
