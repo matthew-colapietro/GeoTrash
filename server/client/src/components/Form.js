@@ -18,12 +18,13 @@ class Form extends Component {
       trashImage: '',
       trashQuantity: '',
       hazardnessLevel: '',
-      submissionDate: ''
+      formView: 'row'
     }
 
     this.handleSubmitNewTrash = this.handleSubmitNewTrash.bind(this);
     this.updateLat = this.updateLat.bind(this);
     this.updateLng = this.updateLng.bind(this);
+    this.handleFormWindowClick = this.handleFormWindowClick.bind(this);
   }
 
   updateLat () {
@@ -34,12 +35,20 @@ class Form extends Component {
     }
   }
 
-  updateLng () {
+  updateLng() {
     if (!this.props) {
       return null
     } else {
       return this.props.coordinates.longitude
     }
+  }
+
+  handleFormWindowClick () {
+    if (this.state.formView === "row") {
+      this.setState({ formView: "row d-none" })
+    } else {
+      this.setState({ formView: "row" })
+    }  
   }
 
   handleSubmitNewTrash () {
@@ -51,7 +60,7 @@ class Form extends Component {
       return alert('Please click on the map to update where the trash will be located (This will fill in the Latitude & Longitude fields)');
     }
     
-    if(!this.state.reporterName || !this.state.phoneNumber || !this.state.email || !this.state.trashImage || !this.state.trashQuantity || !this.state.hazardnessLevel || this.props.coordinates) {
+    if(!this.state.reporterName || !this.state.phoneNumber || !this.state.email || !this.state.trashImage || !this.state.trashQuantity || !this.state.hazardnessLevel) {
       alert('Please ensure all fields are entered');
       console.log(this.props.coordinates)
       return console.log(this.state)
@@ -72,17 +81,20 @@ class Form extends Component {
   }
 
   render() {
+    
+
     return (
+
       <div className="main-form row">
     
         <div className="col-md-12" id="form-input">
           
           <div className="page-header text-center mt-5">
-            <h2 className="pb-3"><span>Submit New Trash Location</span></h2>
+            <h2 className="pb-3" onClick={e => this.handleFormWindowClick()}><span>Submit New Trash Location</span></h2>
           </div>
 
            {/* form to hold the values the user will submit to add a new contact */}
-          <form className="row">
+          <form className={this.state.formView}>
             <div className="col-md-5 offset-md-1 pt-2">
               {/* <label><strong>Reporter name</strong></label> */}
               {/* updating the state with the value of the input */}
