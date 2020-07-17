@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./Header"
 import MapContainer  from "./MapContainer";
 import Form from "./Form";
+import '../styling/App.css'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import { Switch, Route } from "react-router-dom";

@@ -112,14 +112,14 @@ class Form extends Component {
 
               {/* <label><strong>Latitude</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="latitude" onChange={event => this.setState({ latitude: parseFloat(event.target.value) })
+              <input type='text' className='form-control' placeholder="Latitude" onChange={event => this.setState({ latitude: parseFloat(event.target.value) })
               }/>
 
               <br/>
 
               {/* <label><strong>Longitude</strong></label> */}
               {/* updating the state with the value of the input */}
-              <input type='text' className='form-control' placeholder="longitude" onChange={event => this.setState({ longitude: parseFloat(event.target.value) })
+              <input type='text' className='form-control' placeholder="Longitude" onChange={event => this.setState({ longitude: parseFloat(event.target.value) })
               }/>
 
               {/* button to handle the start of the function that will pass 
