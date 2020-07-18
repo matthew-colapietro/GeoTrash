@@ -22,8 +22,6 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
-
-
 router(app);
 
 // app.use(mainRoutes)
