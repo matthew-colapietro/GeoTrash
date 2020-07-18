@@ -90,7 +90,7 @@ class Form extends Component {
         <div className="col-md-12" id="form-input">
           
           <div className="page-header text-center mt-5">
-            <h2 className="pb-3" onClick={e => this.handleFormWindowClick()}><span>Submit New Trash Location</span></h2>
+            <button className="form-button pb-3" onClick={e => this.handleFormWindowClick()}>Submit New Trash Location</button>
           </div>
 
            {/* form to hold the values the user will submit to add a new contact */}
