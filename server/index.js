@@ -16,15 +16,15 @@ mongoose.connect(keys.MONGODB_URI, {
 //using cors for server to server request
 app.use(cors());
 
+app.use(bodyParser.json())
 
 app.use(bodyParser.urlencoded({
   extended: true
 }))
-app.use(bodyParser.json())
 
 router(app);
 
-// app.use(mainRoutes)
+app.use(mainRoutes)
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets

@@ -7,11 +7,6 @@ const { Trash } = require("./models/TrashSchema");
 module.exports = function (router) {
   
   router.post('/trash/', (req, res, next) => {
-    //send back error if all product info is not completed
-    // if (!req.body.category || !req.body.name || !req.body.price || !req.body.image) {
-    //   res.writeHead(404, "Not enough product information");
-    //   return res.end();
-    // }
     
     console.log(req.body.submissionDate)
     
