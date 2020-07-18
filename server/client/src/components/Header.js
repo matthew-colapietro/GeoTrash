@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styling/Header.css";
+import "../styling/Header-Footer.css";
 import { Link } from "react-router-dom";
 
 

@@ -18,7 +18,7 @@ class Form extends Component {
       trashImage: '',
       trashQuantity: '',
       hazardnessLevel: '',
-      formView: 'row'
+      formView: 'row d-none'
     }
 
     this.handleSubmitNewTrash = this.handleSubmitNewTrash.bind(this);

@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import Header from "./Header"
 import MapContainer  from "./MapContainer";
 import Form from "./Form";
+import Footer from "./Footer"
+
 import '../styling/App.css'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import { Switch, Route } from "react-router-dom";
 import AdminPage from "./AdminPage";
+
 
 
 class App extends Component {
@@ -22,6 +25,7 @@ class App extends Component {
                   <Header />
                   <Form />
                   <MapContainer />
+                  <Footer />
                 </div>
               )
             }

@@ -76,30 +76,26 @@ export class MapContainer extends Component {
       height: '90%',
       margin: '2% 10%',
       borderRadius: '10px',
+      position: 'absolute',
+      
     };
 
     //display "loading" text if props does not yet contain data
     if (!this.props.trash.trashes) {
       return (
-        <h1>Loading...</h1>
+        <h1 className = "row justify-content-center">Loading...</h1>
       )
     }
 
     return (
-      <div>
+      <div style={{backgroundColor: "#f5f5f5"}}>
         <div className="row justify-content-center pt-2">
           <p><strong>Click on map to find the Latitude and Longitude</strong></p>
-        </div>
-        <div className="row justify-content-center">
-          <h5> Latitude: {this.state.userClickedLatitude} </h5>
-        </div>
-        <div className="row justify-content-center">
-          <h5> Longitude: {this.state.userClickedLongitude} </h5>
         </div>
 
         <div className= "row justify-content-center">
           <Map
-            className = "col-md-12"
+            className = "col-md-12 mb-4"
             google={this.props.google}
             zoom={10}
             style = {mapStyles}
@@ -130,7 +126,7 @@ export class MapContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  return { trash: state.trash, };
+  return { trash: state.trash };
 }
 
 function mapDispatchToProp(dispatch) {

@@ -1,8 +1,7 @@
-#header, #footer {
+#header {
   background-color: #ffe354;
   width: 100%;
   height: 50px;
-  margin-bottom: 1%;
 }
 
 #user-info {
@@ -66,8 +65,25 @@
   border-radius: 0 5px 5px 0;  
 }
 
-.admin-button:hover
-{
-        box-shadow: inset 0 0 0 20px #5388ea;
+.admin-button:hover {
+  box-shadow: inset 0 0 0 20px #5388ea;
 }
 
+#footer {
+  background-color: #ffe354;
+  opacity: .4;
+  width: 100%;
+  height: 50px;
+}
+
+.year {
+  float: right;
+  height: 80%;
+  padding: 1%;
+}
+
+.name {
+  float: left;
+  height: 80%;
+  padding: 1%;
+}

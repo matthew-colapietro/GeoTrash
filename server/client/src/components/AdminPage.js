@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import { getTrashData } from "../actions" ; 
 import { Link } from "react-router-dom";
 import MapContainer  from "./MapContainer";
+import Footer from "./Footer"
 import Moment from 'react-moment'
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -137,7 +138,7 @@ class AdminPage extends Component {
         </div>
 
         <MapContainer />
-
+        <Footer />
       </div>
 
     )
