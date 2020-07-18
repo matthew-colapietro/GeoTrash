@@ -71,11 +71,12 @@ class Form extends Component {
       console.log(this.state)
       
     }
+
+    
   }
 
   getDate() {
-    //getting current date and adding to state
-    //for submission to database
+    //getting current date and adding to state for submission to database
     let currentDate = new Date()
     return currentDate
   }

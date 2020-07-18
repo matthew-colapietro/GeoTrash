@@ -4,7 +4,8 @@
   "description": "This project focuses on a community reporting tool for trash that can be used by local officials to monitor and their jurisdiction.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,9 @@
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "mongoose": "^5.9.18"
+  },
+  "engines": {
+    "node": "10.0.0",
+    "npm": "5.1.0"
   }
 }

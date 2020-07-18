@@ -6,7 +6,7 @@ export const SET_COORDINATES= 'SET_COORDINATES';
 
 
 //const API_KEY = ''; API KEY NOT NEEDED
-const ROOT_URL = 'http://localhost:8000/trash'
+const ROOT_URL = 'http://localhost:5000/trash'
 
 //API pull for Products information
 export function addTrashInformation(reporterName, phoneNumber, email, trashImage, trashQuantity, hazardnessLevel, longitude, latitude, submissionDate) {
