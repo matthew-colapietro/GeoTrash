@@ -4,6 +4,7 @@
   "description": "This project focuses on a community reporting tool for trash that can be used by local officials to monitor and their jurisdiction.",
   "main": "index.js",
   "scripts": {
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
