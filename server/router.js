@@ -57,7 +57,11 @@ module.exports = function (router) {
     //Applying to the status variable the value in the request query
     //for use in Product.find() 
     if (req.query.status) {
-      status = {status: req.query.status}
+      if (req.query.status === "All") {
+        status = {}
+      } else {
+        status = {status: req.query.status}
+      } 
     }
 
     Trash

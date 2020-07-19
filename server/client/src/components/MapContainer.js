@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 // import { customGoogleMapStyle } from '../styling/GoogleMapStyle'
+import Logo from "../assets/GeoTrash-Logo.png"
 
 import { getTrashData, setCoordinates } from "../actions"  
 
@@ -45,6 +46,7 @@ export class MapContainer extends Component {
   displayMarkers = () => {
     return this.props.trash.trashes.map((location, index) => {
       return <Marker 
+          // icon = {Logo}
           key={index} 
           id={location._id}
           name={location.reporterName} 
@@ -93,9 +95,9 @@ export class MapContainer extends Component {
 
     return (
       <div style={{backgroundColor: "#f5f5f5"}}>
-        <div className="text-center pt-2">
+        {/* <div className="text-center pt-2">
           <p><strong>Click on map to find the Latitude and Longitude</strong></p>
-        </div>
+        </div> */}
 
         <div className= "row justify-content-center">
           <Map

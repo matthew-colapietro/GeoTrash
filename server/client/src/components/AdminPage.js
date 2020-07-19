@@ -29,7 +29,7 @@ class AdminPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getTrashData('','','');
+    this.props.getTrashData('','','',);
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -56,7 +56,7 @@ class AdminPage extends Component {
   displayTable() {
     return this.props.trash.trashes.map((location, index) => {
       return (
-        <tr>
+        <tr key={Math.random()}>
           <td><button id={location._id} onClick={e => this.handleToggleStatusClick(e.target.getAttribute('id'))}>Toggle Status</button></td>
           <td>{location.status}</td>
           {/* Using moment.js to convert UTC date to readable format */}
@@ -91,9 +91,7 @@ class AdminPage extends Component {
           </Link>
         </div>
         
-
         <div className="row justify-content-sm-center py-2">
-          {/* <form> */}
 
             <div className="col-md-6">
             {/* user's search bar entry will be stored in state */}
@@ -115,7 +113,6 @@ class AdminPage extends Component {
             </div>
             </div>
 
-
             {/* category selection changes will be stored in state */}
             <div className="col-md-6">
             <div>
@@ -131,18 +128,16 @@ class AdminPage extends Component {
             </div>
 
             {/* sort selection change will be changed in state */}
-            <div>
-              <label className="mr-2">Status:</label>
-              <select className="mr-4" name="status" onChange={event => this.setState({ status: event.target.value }) }>
-                <option value=""></option>
-                <option value="Open">Open</option>
-                <option value="Closed">Closed</option>
-              </select>
+              <div>
+                <label className="mr-2">Status:</label>
+                <select className="mr-4" name="status" onChange={event => this.setState({ status: event.target.value }) }>
+                  <option value="All">All</option>
+                  <option value="Open">Open</option>
+                  <option value="Closed">Closed</option>
+                </select>
+              </div>
             </div>
-            </div>
-       
 
-          {/* </form> */}
         </div>
 
         <div className="table-container">
@@ -160,7 +155,7 @@ class AdminPage extends Component {
               </tr>
             </thead>
             <tbody>
-              
+              {/* display all data from database return in props */}
               {this.displayTable()}
 
             </tbody>
@@ -170,7 +165,6 @@ class AdminPage extends Component {
         <MapContainer />
         <Footer />
       </div>
-
     )
   }
 }
