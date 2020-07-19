@@ -131,7 +131,8 @@ class Form extends Component {
               {/* <label><strong>Quantity of Trash</strong></label> */}
               {/* updating the state with the value of the input */}
               <select type='text' className='form-control' placeholder="Quantity of Trash" onChange={event => this.setState({ trashQuantity: event.target.value })}>
-              <option value="" disabled selected>Quantity of Trash (Please choose one of the options)</option>
+               <option value="" disabled selected>Quantity of Trash (Please choose one of the options)</option>
+                <option value="Minimal">Minimal (A few pieces of trash)</option>
                 <option value="Low">Low (Less than 1-2 trash bags needed)</option>
                 <option value="Moderate">Moderate (2-3 trash bags likely needed)</option>
                 <option value="High">High (4+ trash bags needed and/or giant items such as a car tire) </option>

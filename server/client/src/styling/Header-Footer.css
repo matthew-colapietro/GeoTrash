@@ -53,7 +53,8 @@
   cursor: pointer;
 
 /* Just for presentation */  
-  margin: .3% .2%;
+  margin: .3% .3%;
+  padding-right: 1%;
   float: right;
 }
 .admin-button:active {
@@ -88,7 +89,7 @@
   height: 50px;
 }
 
-.year {
+.year, .logo-design {
   float: right;
   height: 80%;
   padding: 1%;

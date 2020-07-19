@@ -15,15 +15,13 @@ class Header extends Component {
         </Link>
         
         <Link to="/admin">
-          <button className="admin-button" id="admin-button" alt="The admin button">Land Management</button>
+          <button className="admin-button" id="admin-button" alt="The admin button">Management</button>
         </Link>
 
       </div>
     );
   }
 }
-
-
 
 
 export default Header;

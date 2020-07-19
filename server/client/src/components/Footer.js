@@ -12,6 +12,9 @@ class Footer extends Component {
         <div className="year">
           <p>© 2020 GeoTrash</p>
         </div>
+        <div>
+          <p className="logo-design">Logo Design by: Justin Raymond</p>
+        </div>
       </div>
     );
   }

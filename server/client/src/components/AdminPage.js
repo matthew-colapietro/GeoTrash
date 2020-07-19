@@ -101,6 +101,7 @@ class AdminPage extends Component {
             <label className="mr-2">Trash Hazard Level</label>
             <select className="mr-4" name="category" onChange={event => this.setState({ hazardnessLevel: event.target.value }) }>
               <option value=""></option>
+              <option value="Minimal">Minimal</option>
               <option value="Low">Low</option>
               <option value="Moderate">Moderate</option>
               <option value="High">High</option>
@@ -117,7 +118,7 @@ class AdminPage extends Component {
           </form>
         </div>
 
-        <div>
+        <div className="table-container">
           <table className="table table-dark table-striped justify-content-center">
             <thead>
               <tr>
