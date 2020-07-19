@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styling/Form.css'
 
-import { addTrashInformation, setCoordinates } from "../actions"
+import { addTrashInformation, setCoordinates, getTrashData } from "../actions"
 
 
 class Form extends Component {
@@ -67,9 +67,12 @@ class Form extends Component {
 
     } else {
       
-      this.props.addTrashInformation(this.state.reporterName, this.state.phoneNumber, this.state.email, this.state.trashImage, this.state.trashQuantity, this.state.hazardnessLevel, this.updateLat(), this.updateLng(), this.getDate())
-      console.log(this.state)
+      const handleRequests = async () => {
+        await this.props.addTrashInformation(this.state.reporterName, this.state.phoneNumber, this.state.email, this.state.trashImage, this.state.trashQuantity, this.state.hazardnessLevel, this.updateLat(), this.updateLng(), this.getDate())
+        this.props.getTrashData('','','','')
+      }
       
+      handleRequests()  
     }
 
     
@@ -82,10 +85,7 @@ class Form extends Component {
   }
 
   render() {
-    
-
     return (
-
       <div className="main-form row">
     
         <div className="col-md-12" id="form-input">
@@ -182,7 +182,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProp(dispatch) {
-  return bindActionCreators({ addTrashInformation, setCoordinates }, dispatch);
+  return bindActionCreators({ addTrashInformation, setCoordinates, getTrashData }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProp)(Form);
