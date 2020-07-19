@@ -7,10 +7,10 @@ export const UPDATE_STATUS = 'UPDATE_STATUS';
 
 
 //const API_KEY = ''; API KEY NOT NEEDED
-const ROOT_URL = 'http://localhost:8000/trash'
+// const ROOT_URL = 'http://localhost:8000/trash'
 
 //below root url is for eventual deployment to heroku
-// const ROOT_URL = `/trash`
+const ROOT_URL = `/trash`
 
 //API pull for Products information
 export function addTrashInformation(reporterName, phoneNumber, email, trashImage, trashQuantity, hazardnessLevel, latitude, longitude, submissionDate) {
