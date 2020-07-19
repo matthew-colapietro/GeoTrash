@@ -15,7 +15,9 @@ class Header extends Component {
         </Link>
         
         <Link to="/admin">
-          <button className="admin-button" id="admin-button" alt="The admin button">Management</button>
+          <button className="admin-button" id="admin-button" alt="The admin button">
+            <span className="pr-4">Management</span>
+          </button>
         </Link>
 
       </div>
