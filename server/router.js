@@ -20,6 +20,7 @@ module.exports = function (router) {
     trash.longitude = req.body.longitude
     trash.latitude = req.body.latitude
     trash.submissionDate = req.body.submissionDate
+    trash.status = req.body.status
   
     trash.save((err) => {
       if (err) throw err
@@ -33,6 +34,7 @@ module.exports = function (router) {
     let hazardnessLevel = {};
     let trashQuantity = {};
     let reporterName = {};
+    let status = {};
   
     //Applying to the hazardnessLevel variable the value in the request query
     //for use in Trash.find() 
@@ -51,11 +53,18 @@ module.exports = function (router) {
     if (req.query.reporterName) {
       reporterName = {"reporterName": { "$regex": req.query.reporterName, "$options": "i"} }
     }
-  
+
+    //Applying to the status variable the value in the request query
+    //for use in Product.find() 
+    if (req.query.status) {
+      status = {status: req.query.status}
+    }
+
     Trash
       .find(hazardnessLevel)
       .find(trashQuantity)
       .find(reporterName)
+      .find(status)
       .exec((err, trashes) => {
         if (err) return next(err)
   

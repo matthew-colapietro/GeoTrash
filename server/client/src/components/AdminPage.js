@@ -20,6 +20,7 @@ class AdminPage extends Component {
       reporterName: '',
       trashQuantity: '',
       hazardnessLevel: '',
+      status: ''
     }
 
     this.displayTable = this.displayTable.bind(this);
@@ -36,9 +37,9 @@ class AdminPage extends Component {
       //checking state to see if any changes have been made
       //based on changes to the form in the render function
     } else if (prevState.reporterName !== this.state.reporterName || prevState.trashQuantity !== this.state.trashQuantity || 
-              prevState.hazardnessLevel !== this.state.hazardnessLevel){
+              prevState.hazardnessLevel !== this.state.hazardnessLevel || prevState.status !== this.state.status){
       console.log(this.state)
-      this.props.getTrashData(this.state.hazardnessLevel, this.state.trashQuantity, this.state.reporterName);
+      this.props.getTrashData(this.state.hazardnessLevel, this.state.trashQuantity, this.state.reporterName, this.state.status);
     }
   }
 
@@ -46,11 +47,12 @@ class AdminPage extends Component {
     return this.props.trash.trashes.map((location, index) => {
       return (
         <tr>
-          <td>{location.reporterName}</td>
+          <td>{location.status}</td>
           {/* Using moment.js to convert UTC date to readable format */}
           <td><Moment format="YYYY/MM/DD">
               {location.submissionDate}
             </Moment></td>
+          <td>{location.reporterName}</td>
           <td>{location.trashQuantity}</td>
           <td>{location.hazardnessLevel}</td>
           <td>{location.latitude}</td>
@@ -81,49 +83,65 @@ class AdminPage extends Component {
         
 
         <div className="row justify-content-sm-center py-2">
-          <form>
+          {/* <form> */}
 
+            <div className="col-md-6">
             {/* user's search bar entry will be stored in state */}
-            <label className="mr-2">Search By User Name</label>
-            <input className="mr-4" type="search" onChange={event => this.setState({ reporterName: event.target.value }) }></input>
-            
-            {/* category selection changes will be stored in state */}
-            <label className="mr-2">Filter by: Trash Quantity</label>
-            <select className="mr-4" name="category" onChange={event => this.setState({ trashQuantity: event.target.value }) }>
-              <option value=""></option>
-              <option value="Low">Low</option>
-              <option value="Moderate">Moderate</option>
-              <option value="High">High</option>
-              <option value="Severe">Severe</option>
-            </select>
+            <div>
+              <label className="mr-2">Search By User Name</label>
+              <input className="mr-4" type="search" onChange={event => this.setState({ reporterName: event.target.value }) }></input>
+            </div>
 
             {/* category selection changes will be stored in state */}
-            <label className="mr-2">Trash Hazard Level</label>
-            <select className="mr-4" name="category" onChange={event => this.setState({ hazardnessLevel: event.target.value }) }>
-              <option value=""></option>
-              <option value="Minimal">Minimal</option>
-              <option value="Low">Low</option>
-              <option value="Moderate">Moderate</option>
-              <option value="High">High</option>
-              <option value="Severe">Severe</option>
-            </select>
+            <div>
+              <label className="mr-2">Filter by: Trash Quantity</label>
+              <select className="mr-4" name="quantity" onChange={event => this.setState({ trashQuantity: event.target.value }) }>
+                <option value=""></option>
+                <option value="Low">Low</option>
+                <option value="Moderate">Moderate</option>
+                <option value="High">High</option>
+                <option value="Severe">Severe</option>
+              </select>
+            </div>
+            </div>
+
+
+            {/* category selection changes will be stored in state */}
+            <div className="col-md-6">
+            <div>
+              <label className="mr-2">Trash Hazard Level</label>
+              <select className="mr-4" name="hazard" onChange={event => this.setState({ hazardnessLevel: event.target.value }) }>
+                <option value=""></option>
+                <option value="Minimal">Minimal</option>
+                <option value="Low">Low</option>
+                <option value="Moderate">Moderate</option>
+                <option value="High">High</option>
+                <option value="Severe">Severe</option>
+              </select>
+            </div>
 
             {/* sort selection change will be changed in state */}
-            {/* <label className="mr-2">sort by:</label>
-            <select className="mr-4" id="cars" name="cars" onChange={event => this.setState({ sort: event.target.value }) }>
-              <option value="highest">highest</option>
-              <option value="lowest">lowest</option>
-            </select> */}
+            <div>
+              <label className="mr-2">Status:</label>
+              <select className="mr-4" name="status" onChange={event => this.setState({ status: event.target.value }) }>
+                <option value=""></option>
+                <option value="Open">Open</option>
+                <option value="Closed">Closed</option>
+              </select>
+            </div>
+            </div>
+       
 
-          </form>
+          {/* </form> */}
         </div>
 
         <div className="table-container">
           <table className="table table-dark table-striped justify-content-center">
             <thead>
               <tr>
-                <th scope="col">Reporter Name</th>
+                <th scope="col">Status</th>
                 <th scope="col">Date Submitted</th>
+                <th scope="col">Reporter Name</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Hazard Level</th>
                 <th scope="col">Latitude</th>

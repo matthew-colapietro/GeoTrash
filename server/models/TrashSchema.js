@@ -12,6 +12,7 @@ const TrashSchema = new Schema({
   longitude: Number,
   latitude: Number,
   submissionDate: Date,
+  status: String
 })
 
 

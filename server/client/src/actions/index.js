@@ -28,7 +28,8 @@ export function addTrashInformation(reporterName, phoneNumber, email, trashImage
       hazardnessLevel: hazardnessLevel,
       longitude: longitude,
       latitude: latitude,
-      submissionDate: submissionDate
+      submissionDate: submissionDate,
+      status: 'Open'
     }
   })
 
@@ -40,9 +41,9 @@ export function addTrashInformation(reporterName, phoneNumber, email, trashImage
   };
 }
 
-export function getTrashData(hazardnessLevel, trashQuantity, reporterName) {
+export function getTrashData(hazardnessLevel, trashQuantity, reporterName, status) {
   console.log(`GETTING trash data via getTrashData action with properties: ${hazardnessLevel}`);
-  const url = `${ROOT_URL}/?hazardnessLevel=${hazardnessLevel}&trashQuantity=${trashQuantity}&reporterName=${reporterName}`
+  const url = `${ROOT_URL}/?hazardnessLevel=${hazardnessLevel}&trashQuantity=${trashQuantity}&reporterName=${reporterName}&status=${status}`
   const request = axios.get(url);
 
   return {

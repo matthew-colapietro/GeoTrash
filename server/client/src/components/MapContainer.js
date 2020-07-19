@@ -39,7 +39,7 @@ export class MapContainer extends Component {
   };
 
   componentDidMount() {
-    this.props.getTrashData('', '', '');
+    this.props.getTrashData('', '', '', '');
   }
 
   displayMarkers = () => {
