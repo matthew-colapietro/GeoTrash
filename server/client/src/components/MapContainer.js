@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 // import { customGoogleMapStyle } from '../styling/GoogleMapStyle'
-import Logo from "../assets/GeoTrash-Logo.png"
+import GeoTrashIcon from "../assets/geoTrash-icon.png"
 
 import { getTrashData, setCoordinates } from "../actions"  
 
@@ -46,7 +46,10 @@ export class MapContainer extends Component {
   displayMarkers = () => {
     return this.props.trash.trashes.map((location, index) => {
       return <Marker 
-          // icon = {Logo}
+          icon = {{
+            url: GeoTrashIcon,
+            scaledSize: new this.props.google.maps.Size(40, 40),
+          }}
           key={index} 
           id={location._id}
           name={location.reporterName} 

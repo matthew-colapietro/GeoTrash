@@ -3,7 +3,7 @@ const { Trash } = require("./models/TrashSchema");
 
 //Set up routes
 
-module.exports = function (router) {
+// module.exports = function (router) {
   
   router.post('/trash/', (req, res, next) => {
     
@@ -93,4 +93,6 @@ module.exports = function (router) {
       res.send(trashes)
     })
   })
-};
+// };
+
+module.exports = router

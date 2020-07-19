@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
-router(app);
+// router(app);
 
 app.use(mainRoutes)
 
@@ -40,7 +40,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const port = process.env.PORT || 8000;
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
-server.listen(port);
+app.listen(port)
+// server.listen(port);
 console.log("Server listening on:", port);
