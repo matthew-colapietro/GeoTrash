@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const { Trash } = require("./models/TrashSchema");
 
-
 //Set up routes
 
 module.exports = function (router) {

@@ -7,10 +7,12 @@ export const SET_COORDINATES= 'SET_COORDINATES';
 
 //const API_KEY = ''; API KEY NOT NEEDED
 const ROOT_URL = 'http://localhost:8000/trash'
+
+//below root url is for eventual deployment to heroku
 // const ROOT_URL = `/trash`
 
 //API pull for Products information
-export function addTrashInformation(reporterName, phoneNumber, email, trashImage, trashQuantity, hazardnessLevel, longitude, latitude, submissionDate) {
+export function addTrashInformation(reporterName, phoneNumber, email, trashImage, trashQuantity, hazardnessLevel, latitude, longitude, submissionDate) {
   console.log(`posting trash with: ${reporterName}, ${phoneNumber}, ${trashQuantity}, ${submissionDate}`)
   const url = `${ROOT_URL}`
   

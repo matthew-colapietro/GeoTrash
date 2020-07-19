@@ -93,10 +93,10 @@ class Form extends Component {
           <div className="page-header text-center mt-5">
             <button className="form-button pb-3" onClick={e => this.handleFormWindowClick()}>Submit New Trash Location</button>
           </div>
-
+          
            {/* form to hold the values the user will submit to add a new contact */}
           <form className={this.state.formView}>
-            <div className="col-md-5 offset-md-1 pt-2">
+            <div className="col-md-5 offset-md-1 pt-4">
               {/* <label><strong>Reporter name</strong></label> */}
               {/* updating the state with the value of the input */}
               <input type='text' className='form-control' placeholder="Reporter Name" onChange={event => this.setState({ reporterName: event.target.value })
@@ -126,7 +126,7 @@ class Form extends Component {
 
             <br/>
             
-            <div className="col-md-5 pl-2 pt-2">
+            <div className="col-md-5 pl-2 pt-4">
 
               {/* <label><strong>Quantity of Trash</strong></label> */}
               {/* updating the state with the value of the input */}

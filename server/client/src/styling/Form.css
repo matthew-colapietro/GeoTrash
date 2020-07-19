@@ -4,6 +4,8 @@
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
   padding-bottom: 10%;
+  overflow: hidden;
+  background-position: center;
 }
 
 h2 span {
@@ -14,7 +16,7 @@ h2 span {
 
 /* General Buttons */
 .submit-contact-button {
-  width: 25%;
+  width: 30%;
   height: 15%;
   background: linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%); /* W3C */
   border: none;

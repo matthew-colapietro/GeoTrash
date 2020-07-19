@@ -80,7 +80,7 @@ class AdminPage extends Component {
         </div>
         
 
-        <div className="row justify-content-md-center py-2">
+        <div className="row justify-content-sm-center py-2">
           <form>
 
             {/* user's search bar entry will be stored in state */}

@@ -89,7 +89,7 @@ export class MapContainer extends Component {
 
     return (
       <div style={{backgroundColor: "#f5f5f5"}}>
-        <div className="row justify-content-center pt-2">
+        <div className="text-center pt-2">
           <p><strong>Click on map to find the Latitude and Longitude</strong></p>
         </div>
 
