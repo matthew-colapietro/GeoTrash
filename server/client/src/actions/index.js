@@ -3,6 +3,7 @@ import axios from 'axios';
 export const CREATE_TRASH = 'CREATE_TRASH';
 export const GET_TRASH = 'GET_TRASH';
 export const SET_COORDINATES= 'SET_COORDINATES';
+export const UPDATE_STATUS = 'UPDATE_STATUS';
 
 
 //const API_KEY = ''; API KEY NOT NEEDED
@@ -50,6 +51,27 @@ export function getTrashData(hazardnessLevel, trashQuantity, reporterName, statu
     type: GET_TRASH,
     payload: request,
   };
+}
+
+export function updateTrashStatus(trashId) {
+  console.log(`PUT update to trashId ${trashId}`)
+  const url = `${ROOT_URL}/`
+
+  const request = axios({
+    method: "put",
+    url: url,
+    data: {
+      trashId: trashId
+    }
+  })
+
+  console.log('Request', request);
+  //this is the action; need to call the redux store dispatch
+  return {
+    type: UPDATE_STATUS,
+    payload: request
+  };
+
 }
 
 export function setCoordinates (latitude, longitude) {

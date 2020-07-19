@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "./Header";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getTrashData } from "../actions" ; 
+import { getTrashData, updateTrashStatus } from "../actions" ; 
 import { Link } from "react-router-dom";
 import MapContainer  from "./MapContainer";
 import Footer from "./Footer"
@@ -21,7 +21,6 @@ class AdminPage extends Component {
       trashQuantity: '',
       hazardnessLevel: '',
       status: '',
-      test: '',
     }
 
     this.displayTable = this.displayTable.bind(this);
@@ -47,8 +46,11 @@ class AdminPage extends Component {
   }
 
   handleToggleStatusClick = (e) =>  {
-    console.log(`handledclicked ${e}`)
-    
+    const handleRequests = async () => {
+      await this.props.updateTrashStatus(e)
+      this.props.getTrashData(this.state.hazardnessLevel, this.state.trashQuantity, this.state.reporterName, this.state.status)
+    }
+    handleRequests() 
   }
 
   displayTable() {
@@ -178,7 +180,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProp(dispatch) {
-  return bindActionCreators({ getTrashData }, dispatch);
+  return bindActionCreators({ getTrashData, updateTrashStatus }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProp)(AdminPage);

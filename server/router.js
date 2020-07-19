@@ -73,7 +73,7 @@ module.exports = function (router) {
   });
 
   router.put('/trash/', (req, res, next) => {
-
+    console.log('the request made it to router.js')
     Trash
     .findById( { _id: req.body.trashId } )
     .exec((err, trashes) => {

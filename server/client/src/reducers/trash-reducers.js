@@ -1,4 +1,4 @@
-import { CREATE_TRASH, GET_TRASH } from '../actions/index';
+import { CREATE_TRASH, GET_TRASH, UPDATE_STATUS } from '../actions/index';
 
 //this is the TrashReducer
 export default function(state = [], action) {
@@ -9,6 +9,8 @@ export default function(state = [], action) {
       if (action.payload.data) {
         console.log("Action.payload.data is: ", action.payload.data)
       };
+      return action.payload.data
+    case UPDATE_STATUS:
       return action.payload.data
     default:
       return state;
