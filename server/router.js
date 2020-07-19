@@ -75,9 +75,16 @@ module.exports = function (router) {
   router.put('/trash/', (req, res, next) => {
 
     Trash
-    .findById( { _id: req.params.trashId } )
+    .findById( { _id: req.body.trashId } )
     .exec((err, trashes) => {
       if (err) return next(err)
+
+      trashes.status = 'Closed';
+      trashes.save((err) => {
+        if (err) {
+          return next(err);
+        }
+      });
 
       res.send(trashes)
     })

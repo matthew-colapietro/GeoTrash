@@ -44,13 +44,17 @@ export class MapContainer extends Component {
 
   displayMarkers = () => {
     return this.props.trash.trashes.map((location, index) => {
-      return <Marker key={index} id={index} name={location.reporterName} image={location.trashImage} status={location.status} position = {{
-        lat: location.latitude,
-        lng: location.longitude
-        }}
-        
-        onClick={this.onMarkerClick}>
-
+      return <Marker 
+          key={index} 
+          id={location._id}
+          name={location.reporterName} 
+          image={location.trashImage} 
+          status={location.status} 
+          position = {{
+            lat: location.latitude,
+            lng: location.longitude
+             }}
+          onClick={this.onMarkerClick}>
         </Marker>
     })
   };

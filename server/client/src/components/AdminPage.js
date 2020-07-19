@@ -20,10 +20,13 @@ class AdminPage extends Component {
       reporterName: '',
       trashQuantity: '',
       hazardnessLevel: '',
-      status: ''
+      status: '',
+      test: '',
     }
 
     this.displayTable = this.displayTable.bind(this);
+    this.handleToggleStatusClick = this.handleToggleStatusClick.bind(this);
+
   }
 
   componentDidMount() {
@@ -43,10 +46,16 @@ class AdminPage extends Component {
     }
   }
 
+  handleToggleStatusClick = (e) =>  {
+    console.log(`handledclicked ${e}`)
+    
+  }
+
   displayTable() {
     return this.props.trash.trashes.map((location, index) => {
       return (
         <tr>
+          <td><button id={location._id} onClick={e => this.handleToggleStatusClick(e.target.getAttribute('id'))}>Toggle Status</button></td>
           <td>{location.status}</td>
           {/* Using moment.js to convert UTC date to readable format */}
           <td><Moment format="YYYY/MM/DD">
@@ -73,11 +82,10 @@ class AdminPage extends Component {
     return (
       <div>
         <Header />
-        {console.log(this.props.trash.trashes)}
 
         <div>
           <Link to="/">
-            <button className="back-button">Back</button>
+            <button className="back-button text-center">Back</button>
           </Link>
         </div>
         
@@ -139,6 +147,7 @@ class AdminPage extends Component {
           <table className="table table-dark table-striped justify-content-center">
             <thead>
               <tr>
+                <th scope="col">Change Status</th>
                 <th scope="col">Status</th>
                 <th scope="col">Date Submitted</th>
                 <th scope="col">Reporter Name</th>

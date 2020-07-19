@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../styling/Header-Footer.css";
 import { Link } from "react-router-dom";
-import { urlencoded } from "body-parser";
 import Logo from "../assets/GeoTrash-Logo.png"
 
 
