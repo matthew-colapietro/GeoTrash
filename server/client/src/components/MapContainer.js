@@ -44,7 +44,7 @@ export class MapContainer extends Component {
 
   displayMarkers = () => {
     return this.props.trash.trashes.map((location, index) => {
-      return <Marker key={index} id={index} name={location.reporterName} image={location.trashImage} position = {{
+      return <Marker key={index} id={index} name={location.reporterName} image={location.trashImage} status={location.status} position = {{
         lat: location.latitude,
         lng: location.longitude
         }}
@@ -111,10 +111,12 @@ export class MapContainer extends Component {
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}
               onClose={this.onClose}
+              maxWidth='300'
             >
-              <div>
-                <h3>Reporter: {this.state.selectedPlace.name}</h3>
-                <img src={this.state.selectedPlace.image} alt="specific trash" />
+              <div style={{height: '300px'}}>
+                <h5 className="h-10">Reporter: {this.state.selectedPlace.name}</h5>
+                <p className="h-10"><strong>Status:</strong> {this.state.selectedPlace.status}</p>
+                <img className="h-75" src={this.state.selectedPlace.image} alt="specific trash" />
               </div>
             </InfoWindow>
 
