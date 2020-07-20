@@ -93,7 +93,7 @@ class AdminPage extends Component {
         
         <div className="row justify-content-sm-center py-2">
 
-            <div className="col-md-6">
+          <div className="col-md-6">
             {/* user's search bar entry will be stored in state */}
             <div>
               <label className="mr-2">Search By User Name</label>
@@ -111,10 +111,10 @@ class AdminPage extends Component {
                 <option value="Severe">Severe</option>
               </select>
             </div>
-            </div>
+          </div>
 
-            {/* category selection changes will be stored in state */}
-            <div className="col-md-6">
+          {/* category selection changes will be stored in state */}
+          <div className="col-md-6">
             <div>
               <label className="mr-2">Trash Hazard Level</label>
               <select className="mr-4" name="hazard" onChange={event => this.setState({ hazardnessLevel: event.target.value }) }>
@@ -128,16 +128,15 @@ class AdminPage extends Component {
             </div>
 
             {/* sort selection change will be changed in state */}
-              <div>
-                <label className="mr-2">Status:</label>
-                <select className="mr-4" name="status" onChange={event => this.setState({ status: event.target.value }) }>
-                  <option value="All">All</option>
-                  <option value="Open">Open</option>
-                  <option value="Closed">Closed</option>
-                </select>
-              </div>
+            <div>
+              <label className="mr-2">Status:</label>
+              <select className="mr-4" name="status" onChange={event => this.setState({ status: event.target.value }) }>
+                <option value="All">All</option>
+                <option value="Open">Open</option>
+                <option value="Closed">Closed</option>
+              </select>
             </div>
-
+          </div>
         </div>
 
         <div className="table-container">

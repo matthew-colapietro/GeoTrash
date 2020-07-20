@@ -88,7 +88,6 @@ class Form extends Component {
     return (
       <div>
         <div className="main-form row">
-      
           <div className="col-md-12" id="form-input">
             
             <div className="page-header text-center mt-5">
@@ -132,7 +131,7 @@ class Form extends Component {
                 {/* <label><strong>Quantity of Trash</strong></label> */}
                 {/* updating the state with the value of the input */}
                 <select type='text' className='form-control' placeholder="Quantity of Trash" onChange={event => this.setState({ trashQuantity: event.target.value })}>
-                  <option value="" disabled>Quantity of Trash (Please choose one of the options)</option>
+                  <option value="" disabled selected>Quantity of Trash (Please choose one of the options)</option>
                   <option value="Minimal">Minimal (A few pieces of trash)</option>
                   <option value="Low">Low (Less than 1-2 trash bags needed)</option>
                   <option value="Moderate">Moderate (2-3 trash bags likely needed)</option>
@@ -145,7 +144,7 @@ class Form extends Component {
                 {/* <label><strong>Hazardness Level</strong></label> */}
                 {/* updating the state with the value of the input */}
                 <select className="form-control" name='category' onChange={event => this.setState({ hazardnessLevel: event.target.value })} >
-                  <option value="" disabled>Hazardness Level (Please choose one of the options)</option>
+                  <option value="" disabled selected>Hazardness Level (Please choose one of the options)</option>
                   <option value="Low">Low (General Plastic and Paper Waste)</option>
                   <option value="Moderate">Moderate (Household chemical containers)</option>
                   <option value="High">High (Industrial Supplies and Materials) </option>
