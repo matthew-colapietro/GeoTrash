@@ -3,12 +3,10 @@ const { Trash } = require("./models/TrashSchema");
 
 //Set up routes
 
-// module.exports = function (router) {
+// module.exports = function (router) { //no longer need this code
   
   router.post('/trash/', (req, res, next) => {
-    
-    console.log(req.body.submissionDate)
-    
+    //creating new trash entry with all parameters from form component
     let trash = new Trash()
   
     trash.reporterName = req.body.reporterName
@@ -77,18 +75,28 @@ const { Trash } = require("./models/TrashSchema");
   });
 
   router.put('/trash/', (req, res, next) => {
-    console.log('the request made it to router.js')
+    //finding trash by id 
+    //then checking to see which status the id should be toggled to
     Trash
     .findById( { _id: req.body.trashId } )
     .exec((err, trashes) => {
       if (err) return next(err)
 
-      trashes.status = 'Closed';
-      trashes.save((err) => {
-        if (err) {
-          return next(err);
-        }
-      });
+      if (trashes.status === 'Open') {
+        trashes.status = 'Closed';
+        trashes.save((err) => {
+          if (err) {
+            return next(err);
+          }
+        });
+      } else if (trashes.status === 'Closed') {
+        trashes.status = 'Open';
+        trashes.save((err) => {
+          if (err) {
+            return next(err);
+          }
+        });
+      }
 
       res.send(trashes)
     })

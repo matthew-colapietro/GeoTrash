@@ -57,7 +57,11 @@ class AdminPage extends Component {
     return this.props.trash.trashes.map((location, index) => {
       return (
         <tr key={Math.random()}>
-          <td><button id={location._id} onClick={e => this.handleToggleStatusClick(e.target.getAttribute('id'))}>Toggle Status</button></td>
+          <td>
+            <button id={location._id} onClick={e => this.handleToggleStatusClick(e.target.getAttribute('id'))}>
+              Toggle Status
+            </button>
+          </td>
           <td>{location.status}</td>
           {/* Using moment.js to convert UTC date to readable format */}
           <td><Moment format="YYYY/MM/DD">
