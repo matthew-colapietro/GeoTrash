@@ -155,7 +155,7 @@ class Form extends Component {
 
                 {/* <label><strong>Latitude</strong></label> */}
                 {/* updating the state with the value of the input */}
-                <input type='text' readOnly className='form-control' placeholder={`Latitdue: ${this.updateLat()}`}
+                <input type='text' readOnly className='form-control' placeholder={`Latitude: ${this.updateLat()}`}
                 />
 
                 <br/>

@@ -45,6 +45,7 @@ class AdminPage extends Component {
   }
 
   handleToggleStatusClick = (e) =>  {
+
     const handleRequests = async () => {
       await this.props.updateTrashStatus(e)
       this.props.getTrashData(this.state.hazardnessLevel, this.state.trashQuantity, this.state.reporterName, this.state.status)
@@ -57,8 +58,9 @@ class AdminPage extends Component {
       return (
         <tr key={Math.random()}>
           <td>
-            <button className="toggle-button" id={location._id} onClick={e => this.handleToggleStatusClick(e.target.getAttribute('id'))}>
-              <span className="text-center">Toggle Status</span>
+            <button className="toggle-button" id={location._id} onClick={e => this.handleToggleStatusClick(e.target.getAttribute('id'))}> 
+              Toggle Status
+              {/* <span className="text-center" id={location.id}>Toggle Status</span> */}
             </button>
           </td>
           <td>{location.status}</td>
@@ -88,15 +90,15 @@ class AdminPage extends Component {
       <div>
         <Header />
 
-        <div>
+        {/* <div>
           <Link to="/">
             <button className="back-button text-center">Back</button>
           </Link>
-        </div>
+        </div> */}
         
         <div className="row justify-content-sm-center py-2">
 
-          <div className="col-md-6">
+          <div className="col-md-5">
             {/* user's search bar entry will be stored in state */}
             <div className="pt-2">
               <label className="mr-2">Search By User Name</label>
@@ -117,7 +119,7 @@ class AdminPage extends Component {
           </div>
 
           {/* category selection changes will be stored in state */}
-          <div className="col-md-6">
+          <div className="col-md-5">
             <div className="pt-2">
               <label className="mr-2">Trash Hazard Level</label>
               <select className="mr-4" name="hazard" onChange={event => this.setState({ hazardnessLevel: event.target.value }) }>

@@ -1,12 +1,12 @@
 const express = require('express')
-// const http = require("http");
+const http = require("http");
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const keys = require("./config/keys");
 const cors = require('cors')
 const mainRoutes = require('./router.js')
 const app = express()
-// const router = require("./router.js");
+const router = require("./router.js");
 
 mongoose.connect(keys.MONGODB_URI, {
   useNewUrlParser: true,

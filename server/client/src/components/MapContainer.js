@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 // import { customGoogleMapStyle } from '../styling/GoogleMapStyle'
 import GeoTrashIcon from "../assets/geoTrash-icon.png"
+import RedGeoTrashIcon from "../assets/geoTrash-icon-red.png"
 
 import { getTrashData, setCoordinates } from "../actions"  
 
@@ -44,12 +45,25 @@ export class MapContainer extends Component {
   }
 
   displayMarkers = () => {
+    
     return this.props.trash.trashes.map((location, index) => {
-      return <Marker 
-          icon = {{
+      //checking status of location to determine what logo image should be displayed
+      const markerCheck = () => {
+        if (location.status === "Open") {
+          return {
+            url: RedGeoTrashIcon,
+            scaledSize: new this.props.google.maps.Size(40, 40),
+          } 
+        } else {
+          return {
             url: GeoTrashIcon,
             scaledSize: new this.props.google.maps.Size(40, 40),
-          }}
+          }
+        }
+      }
+      
+      return <Marker 
+          icon = {markerCheck()}
           key={index} 
           id={location._id}
           name={location.reporterName} 
@@ -79,14 +93,13 @@ export class MapContainer extends Component {
   };
 
   render() {
-    console.log(`rendering map container`)
+    //Styling for google map
     const mapStyles = {
       width: '80%',
-      height: '90%',
+      height: '70%',
       margin: '2% 10%',
       borderRadius: '10px',
       position: 'absolute',
-      
     };
 
     //display "loading" text if props does not yet contain data
@@ -109,8 +122,8 @@ export class MapContainer extends Component {
             // center={{ lat: 35.780313, lng: -78.639144 }}
             onClick={this.handleMapClick}
           >
-            {console.log(this.props.trash.trashes)}
-            {/* calling function to display all locations in the database as a marker on map */}
+            
+            {/*function to display all locations in the database as a marker on map */}
             {this.displayMarkers()}
 
             <InfoWindow
@@ -140,7 +153,6 @@ function mapStateToProps(state) {
 function mapDispatchToProp(dispatch) {
   return bindActionCreators({ getTrashData, setCoordinates }, dispatch);
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProp)(GoogleApiWrapper({
   apiKey: 'AIzaSyASqfYqXSpj9Hmn3hrPiu8RwOXxxmOhyLE'
