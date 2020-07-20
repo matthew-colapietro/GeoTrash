@@ -58,8 +58,8 @@ class AdminPage extends Component {
       return (
         <tr key={Math.random()}>
           <td>
-            <button id={location._id} onClick={e => this.handleToggleStatusClick(e.target.getAttribute('id'))}>
-              Toggle Status
+            <button className="toggle-button" id={location._id} onClick={e => this.handleToggleStatusClick(e.target.getAttribute('id'))}>
+              <span className="text-center">Toggle Status</span>
             </button>
           </td>
           <td>{location.status}</td>

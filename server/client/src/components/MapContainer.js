@@ -106,7 +106,7 @@ export class MapContainer extends Component {
           <Map
             className = "col-md-12 mb-4"
             google={this.props.google}
-            zoom={10}
+            zoom={5}
             style = {mapStyles}
             initialCenter={{ lat: 35.780313, lng: -78.639144 }}
             // center={{ lat: 35.780313, lng: -78.639144 }}
