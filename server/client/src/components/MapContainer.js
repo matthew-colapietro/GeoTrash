@@ -96,7 +96,7 @@ export class MapContainer extends Component {
     //Styling for google map
     const mapStyles = {
       width: '80%',
-      height: '70%',
+      height: '90%',
       margin: '2% 10%',
       borderRadius: '10px',
       position: 'absolute',
