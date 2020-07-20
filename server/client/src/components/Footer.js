@@ -7,10 +7,10 @@ class Footer extends Component {
     return (
       <div id="footer" className="fixed-bottom mt-2">
         <div className="name">
-          <p>Matthew Colapietro</p>
+          <p>Creator and Engineer: Matthew Colapietro</p>
         </div>
         <div className="year">
-          <p>© 2020 GeoTrash</p>
+          <p>@ 2020 GeoTrash</p>
         </div>
         <div>
           <p className="logo-design">Logo Design by: Justin Raymond</p>

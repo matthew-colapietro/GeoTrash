@@ -25,7 +25,6 @@ class AdminPage extends Component {
 
     this.displayTable = this.displayTable.bind(this);
     this.handleToggleStatusClick = this.handleToggleStatusClick.bind(this);
-
   }
 
   componentDidMount() {
@@ -63,7 +62,7 @@ class AdminPage extends Component {
             </button>
           </td>
           <td>{location.status}</td>
-          {/* Using moment.js to convert UTC date to readable format */}
+          {/* Using moment.js to convert UTC date in database */}
           <td><Moment format="YYYY/MM/DD">
               {location.submissionDate}
             </Moment></td>
@@ -99,13 +98,13 @@ class AdminPage extends Component {
 
           <div className="col-md-6">
             {/* user's search bar entry will be stored in state */}
-            <div>
+            <div className="pt-2">
               <label className="mr-2">Search By User Name</label>
               <input className="mr-4" type="search" onChange={event => this.setState({ reporterName: event.target.value }) }></input>
             </div>
 
             {/* category selection changes will be stored in state */}
-            <div>
+            <div className="pt-2">
               <label className="mr-2">Filter by: Trash Quantity</label>
               <select className="mr-4" name="quantity" onChange={event => this.setState({ trashQuantity: event.target.value }) }>
                 <option value=""></option>
@@ -119,7 +118,7 @@ class AdminPage extends Component {
 
           {/* category selection changes will be stored in state */}
           <div className="col-md-6">
-            <div>
+            <div className="pt-2">
               <label className="mr-2">Trash Hazard Level</label>
               <select className="mr-4" name="hazard" onChange={event => this.setState({ hazardnessLevel: event.target.value }) }>
                 <option value=""></option>
@@ -132,7 +131,7 @@ class AdminPage extends Component {
             </div>
 
             {/* sort selection change will be changed in state */}
-            <div>
+            <div className="pt-2">
               <label className="mr-2">Status:</label>
               <select className="mr-4" name="status" onChange={event => this.setState({ status: event.target.value }) }>
                 <option value="All">All</option>
@@ -143,6 +142,7 @@ class AdminPage extends Component {
           </div>
         </div>
 
+        {/* table for displaying all data from this.props.getTrashData */}
         <div className="table-container">
           <table className="table table-dark table-striped justify-content-center">
             <thead>

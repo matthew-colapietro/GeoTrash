@@ -10,8 +10,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Switch, Route } from "react-router-dom";
 import AdminPage from "./AdminPage";
 
-
-
 class App extends Component {
 
   render() {
